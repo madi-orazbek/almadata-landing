@@ -1,0 +1,1924 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000000000000000000000000000000000000..7fd339b0f6a9d3cf364100845c33e7f1a2cb47ff
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,3 @@
++node_modules/
++build/
++.DS_Store
+diff --git a/README.md b/README.md
+index d82430c5fbcb952fe2149e58a51f3876a9524313..9d2d20d55c790f80f9d9a66ff523cbc8db670db7 100644
+--- a/README.md
++++ b/README.md
+@@ -1,11 +1,18 @@
++# Design System SaaS Landing Page (Community)
+ 
+-  # Design System SaaS Landing Page (Community)
++This is a code bundle for Design System SaaS Landing Page (Community). The original project is available at https://www.figma.com/design/3B3oZw4ZOiyg60TxblZaNz/Design-System-SaaS-Landing-Page--Community-.
+ 
+-  This is a code bundle for Design System SaaS Landing Page (Community). The original project is available at https://www.figma.com/design/3B3oZw4ZOiyg60TxblZaNz/Design-System-SaaS-Landing-Page--Community-.
++## Running the code
+ 
+-  ## Running the code
++1. Run `npm i` to install dependencies.
++2. Run `npm run dev` to start the Vite development server.
++3. Open the URL printed by Vite (usually `http://localhost:3000`).
+ 
+-  Run `npm i` to install the dependencies.
++> **Important:** Do not open `index.html` directly (or serve the repo root with a generic static server).
++> This app uses a TypeScript/TSX entry module (`/src/main.tsx`), which must be transformed by Vite. If you skip Vite,
++> browsers may fail with: `Expected a JavaScript-or-Wasm module script ... MIME type of "binary/octet-stream"`.
+ 
+-  Run `npm run dev` to start the development server.
+-  
+\ No newline at end of file
++## Production preview
++
++- Build the app: `npm run build`
++- Preview the built app: `npm run preview`
+diff --git a/index.html b/index.html
+index fe8e81e6ce78d716bdf0d762f76e176a023c0653..90709e2dc49c1bb8a9a9d97d3e0f8aa5a61e497b 100644
+--- a/index.html
++++ b/index.html
+@@ -1,15 +1,17 @@
++<!DOCTYPE html>
++<html lang="ru">
++  <head>
++    <meta charset="UTF-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++    <title>Almadata — refurbished серверы, TPM support и DevOps услуги</title>
++    <meta
++      name="description"
++      content="Almadata: refurbished серверы enterprise servers класса, third-party maintenance (TPM support), поддержка серверов 24x7, мультивендорная поддержка и DevOps услуги (Kubernetes, CI/CD, infrastructure support)."
++    />
++  </head>
+ 
+-  <!DOCTYPE html>
+-  <html lang="en">
+-    <head>
+-      <meta charset="UTF-8" />
+-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+-      <title>Design System SaaS Landing Page (Community)</title>
+-    </head>
+-
+-    <body>
+-      <div id="root"></div>
+-      <script type="module" src="/src/main.tsx"></script>
+-    </body>
+-  </html>
+-  
+\ No newline at end of file
++  <body>
++    <div id="root"></div>
++    <script type="module" src="/src/main.tsx"></script>
++  </body>
++</html>
+diff --git a/package.json b/package.json
+index 75cbf9c251396f590afd75b12c0916360ea3ba47..bb2d88aff54029a91e7f129cd75e4f562052914d 100644
+--- a/package.json
++++ b/package.json
+@@ -1,60 +1,60 @@
+-
+-  {
+-      "name": "Design System SaaS Landing Page (Community)",
+-      "version": "0.1.0",
+-      "private": true,
+-      "dependencies": {
+-          "@radix-ui/react-accordion": "^1.2.3",
+-          "@radix-ui/react-alert-dialog": "^1.1.6",
+-          "@radix-ui/react-aspect-ratio": "^1.1.2",
+-          "@radix-ui/react-avatar": "^1.1.3",
+-          "@radix-ui/react-checkbox": "^1.1.4",
+-          "@radix-ui/react-collapsible": "^1.1.3",
+-          "@radix-ui/react-context-menu": "^2.2.6",
+-          "@radix-ui/react-dialog": "^1.1.6",
+-          "@radix-ui/react-dropdown-menu": "^2.1.6",
+-          "@radix-ui/react-hover-card": "^1.1.6",
+-          "@radix-ui/react-label": "^2.1.2",
+-          "@radix-ui/react-menubar": "^1.1.6",
+-          "@radix-ui/react-navigation-menu": "^1.2.5",
+-          "@radix-ui/react-popover": "^1.1.6",
+-          "@radix-ui/react-progress": "^1.1.2",
+-          "@radix-ui/react-radio-group": "^1.2.3",
+-          "@radix-ui/react-scroll-area": "^1.2.3",
+-          "@radix-ui/react-select": "^2.1.6",
+-          "@radix-ui/react-separator": "^1.1.2",
+-          "@radix-ui/react-slider": "^1.2.3",
+-          "@radix-ui/react-slot": "^1.1.2",
+-          "@radix-ui/react-switch": "^1.1.3",
+-          "@radix-ui/react-tabs": "^1.1.3",
+-          "@radix-ui/react-toggle": "^1.1.2",
+-          "@radix-ui/react-toggle-group": "^1.1.2",
+-          "@radix-ui/react-tooltip": "^1.1.8",
+-          "class-variance-authority": "^0.7.1",
+-          "clsx": "*",
+-          "cmdk": "^1.1.1",
+-          "embla-carousel-react": "^8.6.0",
+-          "input-otp": "^1.4.2",
+-          "lucide-react": "^0.487.0",
+-          "motion": "*",
+-          "next-themes": "^0.4.6",
+-          "react": "^18.3.1",
+-          "react-day-picker": "^8.10.1",
+-          "react-dom": "^18.3.1",
+-          "react-hook-form": "^7.55.0",
+-          "react-resizable-panels": "^2.1.7",
+-          "recharts": "^2.15.2",
+-          "sonner": "^2.0.3",
+-          "tailwind-merge": "*",
+-          "vaul": "^1.1.2"
+-      },
+-      "devDependencies": {
+-          "@types/node": "^20.10.0",
+-          "@vitejs/plugin-react-swc": "^3.10.2",
+-          "vite": "6.3.5"
+-      },
+-      "scripts": {
+-          "dev": "vite",
+-          "build": "vite build"
+-      }
+-  }
+\ No newline at end of file
++{
++  "name": "Design System SaaS Landing Page (Community)",
++  "version": "0.1.0",
++  "private": true,
++  "dependencies": {
++    "@radix-ui/react-accordion": "^1.2.3",
++    "@radix-ui/react-alert-dialog": "^1.1.6",
++    "@radix-ui/react-aspect-ratio": "^1.1.2",
++    "@radix-ui/react-avatar": "^1.1.3",
++    "@radix-ui/react-checkbox": "^1.1.4",
++    "@radix-ui/react-collapsible": "^1.1.3",
++    "@radix-ui/react-context-menu": "^2.2.6",
++    "@radix-ui/react-dialog": "^1.1.6",
++    "@radix-ui/react-dropdown-menu": "^2.1.6",
++    "@radix-ui/react-hover-card": "^1.1.6",
++    "@radix-ui/react-label": "^2.1.2",
++    "@radix-ui/react-menubar": "^1.1.6",
++    "@radix-ui/react-navigation-menu": "^1.2.5",
++    "@radix-ui/react-popover": "^1.1.6",
++    "@radix-ui/react-progress": "^1.1.2",
++    "@radix-ui/react-radio-group": "^1.2.3",
++    "@radix-ui/react-scroll-area": "^1.2.3",
++    "@radix-ui/react-select": "^2.1.6",
++    "@radix-ui/react-separator": "^1.1.2",
++    "@radix-ui/react-slider": "^1.2.3",
++    "@radix-ui/react-slot": "^1.1.2",
++    "@radix-ui/react-switch": "^1.1.3",
++    "@radix-ui/react-tabs": "^1.1.3",
++    "@radix-ui/react-toggle": "^1.1.2",
++    "@radix-ui/react-toggle-group": "^1.1.2",
++    "@radix-ui/react-tooltip": "^1.1.8",
++    "class-variance-authority": "^0.7.1",
++    "clsx": "*",
++    "cmdk": "^1.1.1",
++    "embla-carousel-react": "^8.6.0",
++    "input-otp": "^1.4.2",
++    "lucide-react": "^0.487.0",
++    "motion": "*",
++    "next-themes": "^0.4.6",
++    "react": "^18.3.1",
++    "react-day-picker": "^8.10.1",
++    "react-dom": "^18.3.1",
++    "react-hook-form": "^7.55.0",
++    "react-resizable-panels": "^2.1.7",
++    "recharts": "^2.15.2",
++    "sonner": "^2.0.3",
++    "tailwind-merge": "*",
++    "vaul": "^1.1.2"
++  },
++  "devDependencies": {
++    "@types/node": "^20.10.0",
++    "@vitejs/plugin-react-swc": "^3.10.2",
++    "vite": "6.3.5"
++  },
++  "scripts": {
++    "dev": "vite",
++    "build": "vite build",
++    "preview": "vite preview"
++  }
++}
+diff --git a/src/components/CTABanner.tsx b/src/components/CTABanner.tsx
+index b9918146ecacf6e3590b5ee43262de237921fe5c..3c3824864718b6542461cc390977588b0dc73a2f 100644
+--- a/src/components/CTABanner.tsx
++++ b/src/components/CTABanner.tsx
+@@ -1,57 +1,53 @@
+ import { Button } from "./ui/button";
+ import { ArrowRight } from "lucide-react";
+ import { motion } from "motion/react";
+ 
+ export function CTABanner() {
+   return (
+     <section className="py-20 lg:py-32 relative overflow-hidden">
+-      {/* Animated gradient background */}
+       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-primary/20 animate-gradient"></div>
+       <div className="absolute inset-0 backdrop-blur-3xl"></div>
+-      
+-      {/* Glow effects */}
++
+       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/30 rounded-full blur-3xl animate-pulse"></div>
+-      
++
+       <div className="container mx-auto px-4 text-center relative z-10">
+         <motion.div
+           initial={{ opacity: 0, scale: 0.95 }}
+           whileInView={{ opacity: 1, scale: 1 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.6 }}
+           className="max-w-3xl mx-auto"
+         >
+           <h2 className="text-3xl md:text-4xl lg:text-6xl tracking-tight mb-6">
+-            Ready to optimize your{" "}
+-            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
+-              infrastructure
+-            </span>
++            Готовы снизить TCO и усилить
++            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient"> infrastructure support</span>
+             ?
+           </h2>
+           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+-            Contact our technical team to discuss your infrastructure requirements and 
+-            receive a comprehensive proposal tailored to your organization.
++            Almadata сочетает enterprise refurbished поставки, TPM support и DevOps услуги для надежной работы
++            критичных сервисов бизнеса.
+           </p>
+           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+-            <Button 
+-              size="lg" 
++            <Button
++              size="lg"
+               className="w-full sm:w-auto bg-gradient-to-r from-primary to-accent hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-110 active:scale-95 group text-lg px-8 py-6"
+             >
+-              Request Consultation
++              Получить консультацию
+               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+             </Button>
+-            <Button 
+-              size="lg" 
++            <Button
++              size="lg"
+               variant="outline"
+               className="w-full sm:w-auto border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 active:scale-95 text-lg px-8 py-6"
+             >
+-              View Case Studies
++              Запросить предложение
+             </Button>
+           </div>
+           <p className="text-xs text-muted-foreground mt-6">
+-            Enterprise contracts available · Custom SLA agreements · Dedicated support teams
++            TPM support · поддержка серверов 24x7 · SLA 2/4/8 · мультивендорная поддержка
+           </p>
+         </motion.div>
+       </div>
+     </section>
+   );
+ }
+diff --git a/src/components/CodeSection.tsx b/src/components/CodeSection.tsx
+index bd0bf3118740c606657add35923f0fa44160b38b..4049ddcd1eecaf30042f97a5fb3ae6d2bc732f04 100644
+--- a/src/components/CodeSection.tsx
++++ b/src/components/CodeSection.tsx
+@@ -1,191 +1,148 @@
+ import { useState } from "react";
+ import { Button } from "./ui/button";
+ import { Copy, Check, Server } from "lucide-react";
+ import { motion } from "motion/react";
+ 
+-const specExample = `Server Configuration Specifications
++const specExample = `DevOps & Infrastructure Stack
+ 
+-Model: Enterprise Rack Server R740xd
+-Processors: 2× Intel Xeon Gold 6248R
+-Memory: 512GB DDR4 ECC 2933MHz
+-Storage: 8× 2TB NVMe SSD RAID 10
+-Network: 4× 10GbE + 2× 25GbE
+-Management: iDRAC9 Enterprise
+-Power: Redundant 1100W Platinum PSU`;
++Cloud: AWS, Azure
++Virtualization: Proxmox VE, VMware
++OS: Linux, Windows
++Containers: Kubernetes, Docker Swarm
++IaC: Terraform, Ansible, Helm
++Observability: Prometheus, Grafana, Loki, ELK
++CI/CD: Jenkins, GitLab CI, Argo CD, Bitbucket Pipelines
++Security: Vault, Keycloak
++Data: PostgreSQL, MS SQL Server
++Web: IIS, Apache, Nginx`;
+ 
+ export function CodeSection() {
+   const [copied, setCopied] = useState(false);
+   const [specLines, setSpecLines] = useState<string[]>([]);
+ 
+   const handleCopy = () => {
+     navigator.clipboard.writeText(specExample);
+     setCopied(true);
+     setTimeout(() => setCopied(false), 2000);
+   };
+ 
+   const displaySpecs = () => {
+     setSpecLines([]);
+     const lines = [
+-      "Analyzing infrastructure requirements...",
+-      "✓ Computing capacity validated",
+-      "✓ Storage requirements confirmed",
+-      "✓ Network topology verified",
+-      "✓ Power and cooling assessed",
+-      "Ready for deployment"
++      "Анализ CI/CD контура...",
++      "✓ Проверка IaC и Kubernetes выполнена",
++      "✓ Мониторинг и centralized logging спроектированы",
++      "✓ Backup / recovery сценарии согласованы",
++      "✓ DevSecOps требования учтены",
++      "План внедрения готов",
+     ];
+-    
++
+     lines.forEach((line, index) => {
+       setTimeout(() => {
+-        setSpecLines(prev => [...prev, line]);
++        setSpecLines((prev) => [...prev, line]);
+       }, index * 500);
+     });
+   };
+ 
+   return (
+-    <section className="py-20 lg:py-32 relative overflow-hidden">
+-      {/* Background */}
++    <section id="devops" className="py-20 lg:py-32 relative overflow-hidden">
+       <div className="absolute inset-0 bg-gradient-to-b from-background to-muted/20"></div>
+       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl"></div>
+-      
++
+       <div className="container mx-auto px-4 relative z-10">
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+-          {/* Left content */}
+-          <motion.div
+-            initial={{ opacity: 0, x: -30 }}
+-            whileInView={{ opacity: 1, x: 0 }}
+-            viewport={{ once: true }}
+-            transition={{ duration: 0.6 }}
+-          >
++          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+             <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-6">
+-              Rapid{" "}
+-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+-                deployment
+-              </span>
++              DevOps as a
++              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> Service</span>
+             </h2>
+             <p className="text-lg text-muted-foreground mb-6">
+-              Streamlined infrastructure deployment process with comprehensive planning, 
+-              installation, and validation procedures.
++              15+ лет в IT и 5+ лет в DevOps: автоматизация CI/CD, инфраструктура как код, observability,
++              безопасность и стабильная эксплуатация enterprise платформ.
+             </p>
+             <ul className="space-y-3 mb-8">
+               {[
+-                "Pre-configured server systems",
+-                "Validated reference architectures",
+-                "Professional installation services",
+-                "Complete documentation package"
++                "Внедрение и автоматизация CI/CD",
++                "Kubernetes / Docker и IaC (Terraform, Ansible)",
++                "Monitoring, centralized logging, DevSecOps",
++                "Обучение команды и автоматизация deployment",
+               ].map((item, index) => (
+                 <motion.li
+                   key={index}
+                   className="flex items-center space-x-3"
+                   initial={{ opacity: 0, x: -20 }}
+                   whileInView={{ opacity: 1, x: 0 }}
+                   viewport={{ once: true }}
+                   transition={{ duration: 0.4, delay: index * 0.1 }}
+                 >
+                   <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                     <Check className="h-3 w-3 text-primary" />
+                   </div>
+                   <span className="text-sm">{item}</span>
+                 </motion.li>
+               ))}
+             </ul>
+             <Button
+               onClick={displaySpecs}
+               className="bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-105 active:scale-95"
+             >
+               <Server className="mr-2 h-4 w-4" />
+-              View Sample Configuration
++              Показать DevOps стек
+             </Button>
+           </motion.div>
+ 
+-          {/* Right - Spec block */}
+-          <motion.div
+-            initial={{ opacity: 0, x: 30 }}
+-            whileInView={{ opacity: 1, x: 0 }}
+-            viewport={{ once: true }}
+-            transition={{ duration: 0.6 }}
+-            className="relative"
+-          >
++          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="relative">
+             <div className="relative rounded-2xl border border-primary/20 bg-card/50 backdrop-blur-sm shadow-2xl overflow-hidden">
+-              {/* Terminal header */}
+               <div className="flex items-center justify-between px-4 py-3 border-b border-border/50 bg-muted/30">
+                 <div className="flex items-center space-x-2">
+                   <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                   <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                   <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                 </div>
+-                <Button
+-                  size="sm"
+-                  variant="ghost"
+-                  onClick={handleCopy}
+-                  className="h-7 text-xs hover:bg-primary/10 transition-all duration-200"
+-                >
++                <Button size="sm" variant="ghost" onClick={handleCopy} className="h-7 text-xs hover:bg-primary/10 transition-all duration-200">
+                   {copied ? (
+                     <>
+                       <Check className="h-3 w-3 mr-1" />
+-                      Copied
++                      Скопировано
+                     </>
+                   ) : (
+                     <>
+                       <Copy className="h-3 w-3 mr-1" />
+-                      Copy
++                      Копировать
+                     </>
+                   )}
+                 </Button>
+               </div>
+ 
+-              {/* Spec content */}
+               <div className="p-6 font-mono text-sm overflow-x-auto">
+                 {specLines.length > 0 ? (
+                   <div className="space-y-2">
+                     {specLines.map((line, index) => (
+                       <motion.div
+                         key={index}
+                         initial={{ opacity: 0, x: -10 }}
+                         animate={{ opacity: 1, x: 0 }}
+                         transition={{ duration: 0.3 }}
+-                        className={
+-                          line.startsWith("✓") 
+-                            ? "text-green-400" 
+-                            : line.startsWith("Ready")
+-                            ? "text-primary"
+-                            : "text-muted-foreground"
+-                        }
++                        className={line.startsWith("✓") ? "text-green-400" : line.startsWith("План") ? "text-primary" : "text-muted-foreground"}
+                       >
+                         {line}
+                       </motion.div>
+                     ))}
+                   </div>
+                 ) : (
+                   <pre className="text-xs md:text-sm leading-relaxed">
+-                    <code>
+-                      <span className="text-accent">Server Configuration Specifications</span>
+-                      {"\n\n"}
+-                      <span className="text-muted-foreground">Model:</span> <span className="text-foreground">Enterprise Rack Server R740xd</span>
+-                      {"\n"}
+-                      <span className="text-muted-foreground">Processors:</span> <span className="text-foreground">2× Intel Xeon Gold 6248R</span>
+-                      {"\n"}
+-                      <span className="text-muted-foreground">Memory:</span> <span className="text-foreground">512GB DDR4 ECC 2933MHz</span>
+-                      {"\n"}
+-                      <span className="text-muted-foreground">Storage:</span> <span className="text-foreground">8× 2TB NVMe SSD RAID 10</span>
+-                      {"\n"}
+-                      <span className="text-muted-foreground">Network:</span> <span className="text-foreground">4× 10GbE + 2× 25GbE</span>
+-                      {"\n"}
+-                      <span className="text-muted-foreground">Management:</span> <span className="text-foreground">iDRAC9 Enterprise</span>
+-                      {"\n"}
+-                      <span className="text-muted-foreground">Power:</span> <span className="text-foreground">Redundant 1100W Platinum PSU</span>
+-                    </code>
++                    <code>{specExample}</code>
+                   </pre>
+                 )}
+               </div>
+ 
+-              {/* Animated border glow */}
+               <div className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                 <div className="absolute inset-0 rounded-2xl border-2 border-primary/0 hover:border-primary/30 transition-all duration-500"></div>
+               </div>
+             </div>
+           </motion.div>
+         </div>
+       </div>
+     </section>
+   );
+ }
+diff --git a/src/components/FeaturesSection.tsx b/src/components/FeaturesSection.tsx
+index 49a0de824a83400d94c12a1c06f39cdff84e3025..7e158c5ae747e3595fb23ae4e2b3efb0a66bec45 100644
+--- a/src/components/FeaturesSection.tsx
++++ b/src/components/FeaturesSection.tsx
+@@ -1,158 +1,154 @@
+ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+ import { Badge } from "./ui/badge";
+-import { 
+-  Server, 
+-  Database, 
+-  Shield, 
+-  Clock, 
+-  Network, 
++import {
++  Server,
++  Database,
++  Shield,
++  Clock,
++  Network,
+   HeadphonesIcon,
+   Gauge,
+-  Settings
++  Settings,
+ } from "lucide-react";
+ import { motion } from "motion/react";
+ import { useRef, useState } from "react";
+ 
+ const features = [
+   {
+     icon: Server,
+-    title: "Server Infrastructure",
+-    description: "Enterprise-grade server solutions including rack servers, blade systems, and modular infrastructure tailored to your requirements.",
+-    badge: "Core"
++    title: "Enterprise Refurbished Servers",
++    description: "Восстановленные и протестированные enterprise servers с поставкой из наличия за 1–2 недели для масштабирования и вторичных контуров.",
++    badge: "Core",
+   },
+   {
+-    icon: Database,
+-    title: "Storage Systems",
+-    description: "Scalable storage arrays, SAN/NAS solutions, and backup systems ensuring data integrity and availability.",
+-    badge: "Core"
+-  },
+-  {
+-    icon: Network,
+-    title: "Network Equipment",
+-    description: "Complete networking solutions from switches and routers to load balancers and network security appliances.",
+-    badge: "Core"
++    icon: Settings,
++    title: "TPM (Third-Party Maintenance)",
++    description: "Независимая TPM support: экономия до 70% против OEM, поддержка после EOSL и мультивендорная поддержка в одном контракте.",
++    badge: "Core",
+   },
+   {
+     icon: HeadphonesIcon,
+-    title: "24/7 Technical Support",
+-    description: "Round-the-clock technical assistance with guaranteed response times and dedicated support team.",
+-    badge: "Premium"
++    title: "Поддержка серверов 24x7",
++    description: "Круглосуточная техническая поддержка, мониторинг инфраструктуры, реагирование по SLA и восстановление сервисов.",
++    badge: "Premium",
+   },
+   {
+-    icon: Settings,
+-    title: "Infrastructure Management",
+-    description: "Comprehensive management services including monitoring, maintenance, and optimization of your IT infrastructure.",
+-    badge: "Premium"
++    icon: Network,
++    title: "Buffer Stock / ЗИП",
++    description: "Буферный склад запчастей рядом с площадкой заказчика, автоматическое пополнение и быстрое восстановление оборудования.",
++    badge: "Premium",
+   },
+   {
+-    icon: Shield,
+-    title: "Security & Compliance",
+-    description: "Implementation of security measures and compliance with industry standards including ISO 27001 and government regulations.",
+-    badge: "Enterprise"
++    icon: Database,
++    title: "Backup / DR / VDI",
++    description: "Инфраструктура для backup, DR-контуров, VDI и тестовых сред с прогнозируемой стоимостью владения.",
++    badge: "Enterprise",
+   },
+   {
+     icon: Gauge,
+-    title: "Performance Monitoring",
+-    description: "Real-time monitoring and analytics of infrastructure performance with proactive issue detection and resolution.",
+-    badge: "Premium"
++    title: "Infrastructure Optimization",
++    description: "Аудит инфраструктуры, оптимизация ресурсов и план развития мощностей без избыточных капитальных затрат.",
++    badge: "Enterprise",
++  },
++  {
++    icon: Shield,
++    title: "SLA и гарантия",
++    description: "Гибкие SLA 2/4/8 часов, выезд инженеров при необходимости и гарантия до 10 лет по условиям договора.",
++    badge: "Enterprise",
+   },
+   {
+     icon: Clock,
+-    title: "SLA Guarantees",
+-    description: "Guaranteed uptime with clear service level agreements and comprehensive incident response procedures.",
+-    badge: "Enterprise"
+-  }
++    title: "DevOps as a Service",
++    description: "DevOps услуги: CI/CD, Kubernetes, IaC, observability, centralized logging и DevSecOps для стабильной эксплуатации.",
++    badge: "DevOps",
++  },
+ ];
+ 
+-function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
++function FeatureCard({ feature, index }: { feature: (typeof features)[0]; index: number }) {
+   const cardRef = useRef<HTMLDivElement>(null);
+   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+   const [isHovered, setIsHovered] = useState(false);
+ 
+   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+     if (!cardRef.current) return;
+     const rect = cardRef.current.getBoundingClientRect();
+     setMousePosition({
+       x: e.clientX - rect.left,
+       y: e.clientY - rect.top,
+     });
+   };
+ 
+   return (
+     <motion.div
+       initial={{ opacity: 0, y: 30 }}
+       whileInView={{ opacity: 1, y: 0 }}
+       viewport={{ once: true, margin: "-100px" }}
+       transition={{ duration: 0.5, delay: index * 0.1 }}
+     >
+       <Card
+         ref={cardRef}
+         className="relative h-full overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-primary/20 border-border hover:border-primary/50"
+         onMouseMove={handleMouseMove}
+         onMouseEnter={() => setIsHovered(true)}
+         onMouseLeave={() => setIsHovered(false)}
+       >
+-        {/* Cursor-aware glow effect */}
+         {isHovered && (
+           <div
+             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+             style={{
+               background: `radial-gradient(circle 200px at ${mousePosition.x}px ${mousePosition.y}px, rgba(100, 100, 255, 0.15), transparent)`,
+             }}
+           />
+         )}
+ 
+         <CardHeader className="relative z-10">
+           <div className="flex items-center justify-between mb-2">
+             <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
+               <feature.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+             </div>
+             <Badge variant="secondary" className="text-xs bg-secondary/50">
+               {feature.badge}
+             </Badge>
+           </div>
+           <CardTitle className="text-lg">{feature.title}</CardTitle>
+         </CardHeader>
+         <CardContent className="relative z-10">
+           <CardDescription>{feature.description}</CardDescription>
+         </CardContent>
+       </Card>
+     </motion.div>
+   );
+ }
+ 
+ export function FeaturesSection() {
+   return (
+     <section id="services" className="py-20 lg:py-32 relative overflow-hidden">
+-      {/* Background decoration */}
+       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+-      
++
+       <div className="container mx-auto px-4 relative z-10">
+         <motion.div
+           className="text-center mb-16"
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.6 }}
+         >
+           <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4">
+-            Comprehensive{" "}
+-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+-              infrastructure services
+-            </span>
++            Ключевые направления
++            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> Almadata</span>
+           </h2>
+           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
+-            Complete solutions for enterprise IT infrastructure deployment, management, and support 
+-            with guaranteed service levels.
++            Поставка refurbished серверов, third-party maintenance, infrastructure support и DevOps экспертиза
++            для enterprise-инфраструктуры.
+           </p>
+         </motion.div>
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+           {features.map((feature, index) => (
+             <FeatureCard key={index} feature={feature} index={index} />
+           ))}
+         </div>
+       </div>
+     </section>
+   );
+ }
+diff --git a/src/components/Footer.tsx b/src/components/Footer.tsx
+index 58271fa03d8d5848301ac874e008a19e251bb01d..705fbadc213bb84cb390cfd0faf666f05d142903 100644
+--- a/src/components/Footer.tsx
++++ b/src/components/Footer.tsx
+@@ -1,199 +1,151 @@
+ import { Button } from "./ui/button";
+ import { Input } from "./ui/input";
+ import { Separator } from "./ui/separator";
+ import { Github, Twitter, Linkedin, Youtube } from "lucide-react";
+ import { motion } from "motion/react";
+ 
+ const footerLinks = {
+   services: [
+-    { label: "Server Solutions", href: "#services" },
+-    { label: "Storage Systems", href: "#services" },
+-    { label: "Network Infrastructure", href: "#services" },
+-    { label: "Support Packages", href: "#infrastructure" },
++    { label: "Refurbished серверы", href: "#services" },
++    { label: "TPM support", href: "#services" },
++    { label: "Поддержка 24x7", href: "#services" },
++    { label: "DevOps услуги", href: "#devops" },
+   ],
+   resources: [
+-    { label: "Technical Documentation", href: "#" },
+-    { label: "Case Studies", href: "#" },
+-    { label: "Infrastructure Guides", href: "#" },
+-    { label: "Knowledge Base", href: "#" },
++    { label: "Infrastructure support", href: "#" },
++    { label: "SLA и отчётность", href: "#" },
++    { label: "Vendor coverage", href: "#" },
++    { label: "Техническая документация", href: "#" },
+   ],
+   company: [
+-    { label: "About OnePoint", href: "#" },
+-    { label: "Careers", href: "#" },
+-    { label: "Contact", href: "#" },
+-    { label: "Support Center", href: "#" },
++    { label: "О компании", href: "#" },
++    { label: "Отраслевые кейсы", href: "#cases" },
++    { label: "Контакты", href: "#contacts" },
++    { label: "Поддержка", href: "#" },
+   ],
+   legal: [
+-    { label: "Privacy Policy", href: "#" },
+-    { label: "Service Agreement", href: "#" },
+-    { label: "Compliance", href: "#" },
++    { label: "Условия обслуживания", href: "#" },
++    { label: "Политика конфиденциальности", href: "#" },
++    { label: "SLA", href: "#" },
+   ],
+ };
+ 
+ const socialLinks = [
+   { icon: Twitter, href: "#", label: "Twitter" },
+   { icon: Github, href: "#", label: "GitHub" },
+   { icon: Linkedin, href: "#", label: "LinkedIn" },
+   { icon: Youtube, href: "#", label: "YouTube" },
+ ];
+ 
+ export function Footer() {
+   return (
+-    <footer className="border-t border-border/50 bg-gradient-to-b from-background to-muted/20 relative overflow-hidden">
+-      {/* Background decoration */}
++    <footer id="contacts" className="border-t border-border/50 bg-gradient-to-b from-background to-muted/20 relative overflow-hidden">
+       <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+       <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+-      
++
+       <div className="container mx-auto px-4 py-16 relative z-10">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
+-          {/* Brand section */}
+-          <motion.div
+-            className="lg:col-span-4"
+-            initial={{ opacity: 0, y: 20 }}
+-            whileInView={{ opacity: 1, y: 0 }}
+-            viewport={{ once: true }}
+-            transition={{ duration: 0.5 }}
+-          >
++          <motion.div className="lg:col-span-4" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+             <div className="flex items-center space-x-2 mb-4">
+               <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent"></div>
+-              <span className="font-semibold text-lg">OnePoint Support</span>
++              <span className="font-semibold text-lg">Almadata</span>
+             </div>
+             <p className="text-muted-foreground mb-6 max-w-md text-sm">
+-              Centralized IT infrastructure management and support services for government and 
+-              industrial enterprises. Professional solutions with guaranteed service levels.
++              Almadata помогает компаниям эффективно развивать и поддерживать IT-инфраструктуру, сочетая поставку
++              enterprise refurbished оборудования, независимую TPM-поддержку и DevOps-экспертизу.
+             </p>
+-            
+-            {/* Newsletter */}
++
+             <div className="flex flex-col sm:flex-row gap-2 mb-6">
+-              <Input 
+-                placeholder="Email for updates" 
+-                className="max-w-xs bg-background/50 border-border/50 focus:border-primary/50"
+-              />
+-              <Button className="bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 transition-all duration-300">
+-                Subscribe
+-              </Button>
++              <Input placeholder="Email для связи" className="max-w-xs bg-background/50 border-border/50 focus:border-primary/50" />
++              <Button className="bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 transition-all duration-300">Связаться</Button>
+             </div>
+-            
+-            {/* Social links */}
++
++            <div className="space-y-1 text-sm text-muted-foreground mb-6">
++              <p>Email: info@almadata.kz</p>
++              <p>Website: www.almadata.kz</p>
++              <p>Phone: +7 701 137 22 33</p>
++            </div>
++
+             <div className="flex items-center space-x-3">
+               {socialLinks.map((social, index) => (
+                 <motion.a
+                   key={index}
+                   href={social.href}
+                   aria-label={social.label}
+                   className="w-9 h-9 rounded-lg bg-muted/50 hover:bg-primary/20 flex items-center justify-center transition-all duration-300 hover:scale-110 border border-transparent hover:border-primary/30"
+                   whileHover={{ y: -2 }}
+                   whileTap={{ scale: 0.95 }}
+                 >
+                   <social.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
+                 </motion.a>
+               ))}
+             </div>
+           </motion.div>
+-          
+-          {/* Links columns */}
+-          <motion.div
+-            className="lg:col-span-2"
+-            initial={{ opacity: 0, y: 20 }}
+-            whileInView={{ opacity: 1, y: 0 }}
+-            viewport={{ once: true }}
+-            transition={{ duration: 0.5, delay: 0.1 }}
+-          >
++
++          <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+             <h4 className="font-medium mb-4">Services</h4>
+             <ul className="space-y-2 text-sm text-muted-foreground">
+               {footerLinks.services.map((link, index) => (
+                 <li key={index}>
+-                  <a 
+-                    href={link.href} 
+-                    className="hover:text-foreground transition-colors duration-200 hover:translate-x-1 inline-block"
+-                  >
++                  <a href={link.href} className="hover:text-foreground transition-colors duration-200 hover:translate-x-1 inline-block">
+                     {link.label}
+                   </a>
+                 </li>
+               ))}
+             </ul>
+           </motion.div>
+-          
+-          <motion.div
+-            className="lg:col-span-2"
+-            initial={{ opacity: 0, y: 20 }}
+-            whileInView={{ opacity: 1, y: 0 }}
+-            viewport={{ once: true }}
+-            transition={{ duration: 0.5, delay: 0.2 }}
+-          >
++
++          <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
+             <h4 className="font-medium mb-4">Resources</h4>
+             <ul className="space-y-2 text-sm text-muted-foreground">
+               {footerLinks.resources.map((link, index) => (
+                 <li key={index}>
+-                  <a 
+-                    href={link.href} 
+-                    className="hover:text-foreground transition-colors duration-200 hover:translate-x-1 inline-block"
+-                  >
++                  <a href={link.href} className="hover:text-foreground transition-colors duration-200 hover:translate-x-1 inline-block">
+                     {link.label}
+                   </a>
+                 </li>
+               ))}
+             </ul>
+           </motion.div>
+-          
+-          <motion.div
+-            className="lg:col-span-2"
+-            initial={{ opacity: 0, y: 20 }}
+-            whileInView={{ opacity: 1, y: 0 }}
+-            viewport={{ once: true }}
+-            transition={{ duration: 0.5, delay: 0.3 }}
+-          >
++
++          <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
+             <h4 className="font-medium mb-4">Company</h4>
+             <ul className="space-y-2 text-sm text-muted-foreground">
+               {footerLinks.company.map((link, index) => (
+                 <li key={index}>
+-                  <a 
+-                    href={link.href} 
+-                    className="hover:text-foreground transition-colors duration-200 hover:translate-x-1 inline-block"
+-                  >
++                  <a href={link.href} className="hover:text-foreground transition-colors duration-200 hover:translate-x-1 inline-block">
+                     {link.label}
+                   </a>
+                 </li>
+               ))}
+             </ul>
+           </motion.div>
+ 
+-          <motion.div
+-            className="lg:col-span-2"
+-            initial={{ opacity: 0, y: 20 }}
+-            whileInView={{ opacity: 1, y: 0 }}
+-            viewport={{ once: true }}
+-            transition={{ duration: 0.5, delay: 0.4 }}
+-          >
++          <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}>
+             <h4 className="font-medium mb-4">Legal</h4>
+             <ul className="space-y-2 text-sm text-muted-foreground">
+               {footerLinks.legal.map((link, index) => (
+                 <li key={index}>
+-                  <a 
+-                    href={link.href} 
+-                    className="hover:text-foreground transition-colors duration-200 hover:translate-x-1 inline-block"
+-                  >
++                  <a href={link.href} className="hover:text-foreground transition-colors duration-200 hover:translate-x-1 inline-block">
+                     {link.label}
+                   </a>
+                 </li>
+               ))}
+             </ul>
+           </motion.div>
+         </div>
+-        
++
+         <Separator className="mb-8 bg-border/50" />
+-        
++
+         <div className="flex flex-col md:flex-row justify-between items-center">
+-          <p className="text-sm text-muted-foreground mb-4 md:mb-0">
+-            © 2026 OnePoint Support. All rights reserved.
+-          </p>
++          <p className="text-sm text-muted-foreground mb-4 md:mb-0">© 2026 Almadata. All rights reserved.</p>
+           <div className="flex items-center space-x-6 text-sm text-muted-foreground">
+-            <span>ISO 27001 Certified</span>
++            <span>TPM support</span>
+             <span>·</span>
+-            <span>SOC 2 Compliant</span>
++            <span>Infrastructure support</span>
+           </div>
+         </div>
+       </div>
+     </footer>
+   );
+ }
+diff --git a/src/components/Header.tsx b/src/components/Header.tsx
+index a0a2a7533b8cd07e1b80077854b38f1e69906705..6bf690d0b3aa7fb619f05f5e39542a5511825c05 100644
+--- a/src/components/Header.tsx
++++ b/src/components/Header.tsx
+@@ -1,58 +1,63 @@
+ import { Button } from "./ui/button";
+ import { useEffect, useState } from "react";
+ import { motion } from "motion/react";
+ 
+ export function Header() {
+   const [scrolled, setScrolled] = useState(false);
+ 
+   useEffect(() => {
+     const handleScroll = () => {
+       setScrolled(window.scrollY > 50);
+     };
+     window.addEventListener("scroll", handleScroll);
+     return () => window.removeEventListener("scroll", handleScroll);
+   }, []);
+ 
+   return (
+     <header
+       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+         scrolled
+           ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-lg"
+           : "bg-transparent"
+       }`}
+     >
+       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
+         <div className="flex items-center space-x-8">
+-          <motion.div 
++          <motion.div
+             className="flex items-center space-x-2"
+             whileHover={{ scale: 1.03 }}
+             transition={{ duration: 0.2 }}
+           >
+             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent"></div>
+-            <span className="font-semibold text-lg">OnePoint Support</span>
++            <span className="font-semibold text-lg">Almadata</span>
+           </motion.div>
+           <nav className="hidden md:flex items-center space-x-6">
+-            {["Services", "Infrastructure", "Support", "Clients"].map((item) => (
++            {[
++              ["Услуги", "services"],
++              ["Процесс", "process"],
++              ["DevOps", "devops"],
++              ["Кейсы", "cases"],
++            ].map(([label, id]) => (
+               <a
+-                key={item}
+-                href={`#${item.toLowerCase()}`}
++                key={id}
++                href={`#${id}`}
+                 className="text-sm text-muted-foreground hover:text-foreground transition-all duration-200 relative group"
+               >
+-                {item}
++                {label}
+                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
+               </a>
+             ))}
+           </nav>
+         </div>
+         <div className="flex items-center space-x-4">
+           <Button variant="ghost" className="hidden md:inline-flex hover:bg-primary/10">
+-            Sign In
++            info@almadata.kz
+           </Button>
+           <Button className="bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-105 active:scale-95">
+-            Get Started
++            Запросить предложение
+           </Button>
+         </div>
+       </div>
+     </header>
+   );
+-}
+\ No newline at end of file
++}
+diff --git a/src/components/HeroSection.tsx b/src/components/HeroSection.tsx
+index 39c6a9aa4534cea1667d07f772b0489305f97961..89aa7b04413fcede6e6be09fe00214f1b2a984c1 100644
+--- a/src/components/HeroSection.tsx
++++ b/src/components/HeroSection.tsx
+@@ -1,305 +1,238 @@
+ import { Button } from "./ui/button";
+ import { Badge } from "./ui/badge";
+ import { ArrowRight, Play } from "lucide-react";
+ import { useEffect, useRef, useState } from "react";
+ import { motion } from "motion/react";
+ 
+ export function HeroSection() {
+   const sceneRef = useRef<HTMLDivElement>(null);
+   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+ 
+   useEffect(() => {
+     const scene = sceneRef.current;
+     if (!scene) return;
+ 
+-    const cards = scene.querySelectorAll('.floating-card');
+-    
++    const cards = scene.querySelectorAll(".floating-card");
++
+     const animateCards = () => {
+       cards.forEach((card, index) => {
+         const element = card as HTMLElement;
+         const time = Date.now() * 0.001;
+         const offset = index * 0.5;
+-        
++
+         const x = Math.sin(time + offset) * 30;
+         const y = Math.cos(time + offset * 1.2) * 20;
+         const rotateX = Math.sin(time + offset) * 10;
+         const rotateY = Math.cos(time + offset * 0.8) * 15;
+-        
++
+         element.style.transform = `
+-          translate3d(${x}px, ${y}px, 0) 
+-          rotateX(${rotateX}deg) 
++          translate3d(${x}px, ${y}px, 0)
++          rotateX(${rotateX}deg)
+           rotateY(${rotateY}deg)
+         `;
+       });
+-      
++
+       requestAnimationFrame(animateCards);
+     };
+-    
++
+     animateCards();
+   }, []);
+ 
+-  // Parallax effect
+   useEffect(() => {
+     const handleMouseMove = (e: MouseEvent) => {
+       setMousePosition({
+         x: (e.clientX / window.innerWidth - 0.5) * 20,
+         y: (e.clientY / window.innerHeight - 0.5) * 20,
+       });
+     };
+     window.addEventListener("mousemove", handleMouseMove);
+     return () => window.removeEventListener("mousemove", handleMouseMove);
+   }, []);
+ 
+   return (
+     <section className="relative py-20 lg:py-32 overflow-hidden">
+-      {/* Radial gradient glow background */}
+       <div className="absolute inset-0 pointer-events-none">
+-        <div 
++        <div
+           className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-3xl"
+           style={{
+             transform: `translate(-50%, 0) translate3d(${mousePosition.x}px, ${mousePosition.y}px, 0)`,
+           }}
+         ></div>
+-        <div 
++        <div
+           className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-accent/20 rounded-full blur-3xl"
+           style={{
+             transform: `translate3d(${-mousePosition.x * 0.5}px, ${-mousePosition.y * 0.5}px, 0)`,
+           }}
+         ></div>
+       </div>
+ 
+       <div className="container mx-auto px-4 text-center relative z-10">
+-        <motion.div
+-          initial={{ opacity: 0, y: 20 }}
+-          animate={{ opacity: 1, y: 0 }}
+-          transition={{ duration: 0.6 }}
+-        >
++        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+           <Badge variant="secondary" className="mb-6 px-4 py-2 bg-primary/10 border-primary/20 hover:bg-primary/20 transition-colors duration-300">
+-            ✨ Enterprise-grade infrastructure solutions
++            ✨ TPM support · refurbished серверы · DevOps услуги
+           </Badge>
+         </motion.div>
+-        
++
+         <motion.h1
+           className="mx-auto max-w-4xl text-4xl md:text-6xl lg:text-7xl tracking-tight mb-6"
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.6, delay: 0.1 }}
+         >
+-          Centralized IT infrastructure{" "}
++          Enterprise Refurbished Servers, TPM Support and
+           <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
+-            management
+-          </span>{" "}
+-          and support
++            {" "}DevOps Services
++          </span>
+         </motion.h1>
+-        
++
+         <motion.p
+           className="mx-auto max-w-2xl text-lg text-muted-foreground mb-8"
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.6, delay: 0.2 }}
+         >
+-          Professional server deployment, storage systems, and networking infrastructure 
+-          with comprehensive technical support. One point of contact for complete control.
++          Снижаем стоимость владения инфраструктурой, быстро поставляем серверное оборудование корпоративного класса
++          и обеспечиваем независимую поддержку серверов 24x7 по SLA.
+         </motion.p>
+-        
++
+         <motion.div
+           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.6, delay: 0.3 }}
+         >
+-          <Button 
+-            size="lg" 
++          <Button
++            size="lg"
+             className="w-full sm:w-auto bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-105 active:scale-95 group"
+           >
+-            Request Consultation
++            Получить консультацию
+             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+           </Button>
+-          <Button 
+-            variant="outline" 
+-            size="lg" 
++          <Button
++            variant="outline"
++            size="lg"
+             className="w-full sm:w-auto border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 active:scale-95 group"
+           >
+             <Play className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform duration-300" />
+-            View Infrastructure
++            Запросить предложение
+           </Button>
+         </motion.div>
+-        
+-        {/* 3D Graphics Scene */}
++
+         <motion.div
+           className="relative mx-auto max-w-5xl h-96 lg:h-[500px]"
+           initial={{ opacity: 0, scale: 0.95 }}
+           animate={{ opacity: 1, scale: 1 }}
+           transition={{ duration: 0.8, delay: 0.4 }}
+         >
+-          <div 
+-            ref={sceneRef}
+-            className="relative w-full h-full"
+-            style={{ perspective: '1000px' }}
+-          >
+-            {/* Central Hub */}
++          <div ref={sceneRef} className="relative w-full h-full" style={{ perspective: "1000px" }}>
+             <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-3xl shadow-2xl flex items-center justify-center z-10 animate-glow">
+               <div className="w-16 h-16 bg-background/90 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                 <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg"></div>
+               </div>
+             </div>
+-            
+-            {/* Floating Design System Components */}
+-            
+-            {/* Button Component Card */}
++
+             <div className="floating-card absolute top-16 left-20 w-40 h-24 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-2xl shadow-lg p-4 transform-gpu hover:border-primary/50 transition-colors duration-300">
+-              <div className="text-xs text-muted-foreground mb-2">Button</div>
++              <div className="text-xs text-muted-foreground mb-2">Refurbished</div>
+               <div className="space-y-2">
+-                <div className="h-3 bg-gradient-to-r from-primary to-accent rounded w-16"></div>
++                <div className="h-3 bg-gradient-to-r from-primary to-accent rounded w-24"></div>
+                 <div className="h-3 bg-muted rounded w-20"></div>
+               </div>
+             </div>
+-            
+-            {/* Color Tokens Card */}
++
+             <div className="floating-card absolute top-32 right-16 w-36 h-28 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-2xl shadow-lg p-4 transform-gpu hover:border-primary/50 transition-colors duration-300">
+-              <div className="text-xs text-muted-foreground mb-2">Colors</div>
+-              <div className="grid grid-cols-4 gap-1">
+-                <div className="w-4 h-4 bg-primary rounded"></div>
+-                <div className="w-4 h-4 bg-accent rounded"></div>
+-                <div className="w-4 h-4 bg-chart-2 rounded"></div>
+-                <div className="w-4 h-4 bg-chart-3 rounded"></div>
+-                <div className="w-4 h-4 bg-chart-4 rounded"></div>
+-                <div className="w-4 h-4 bg-chart-5 rounded"></div>
+-                <div className="w-4 h-4 bg-secondary rounded"></div>
+-                <div className="w-4 h-4 bg-muted rounded"></div>
++              <div className="text-xs text-muted-foreground mb-2">Vendors</div>
++              <div className="grid grid-cols-2 gap-1 text-[10px] text-muted-foreground">
++                <span>HPE</span>
++                <span>Dell</span>
++                <span>Lenovo</span>
++                <span>Cisco</span>
+               </div>
+             </div>
+-            
+-            {/* Typography Card */}
++
+             <div className="floating-card absolute bottom-20 left-12 w-44 h-32 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-2xl shadow-lg p-4 transform-gpu hover:border-primary/50 transition-colors duration-300">
+-              <div className="text-xs text-muted-foreground mb-2">Typography</div>
+-              <div className="space-y-2">
+-                <div className="h-4 bg-foreground/90 rounded w-32"></div>
+-                <div className="h-3 bg-foreground/70 rounded w-28"></div>
+-                <div className="h-2 bg-foreground/50 rounded w-24"></div>
++              <div className="text-xs text-muted-foreground mb-2">TPM support</div>
++              <div className="space-y-2 text-xs text-muted-foreground">
++                <div>SLA 2/4/8 ч</div>
++                <div>Поддержка после EOSL</div>
++                <div>Мультивендорный контракт</div>
+               </div>
+             </div>
+-            
+-            {/* Component Library Card */}
++
+             <div className="floating-card absolute bottom-24 right-20 w-38 h-36 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-2xl shadow-lg p-4 transform-gpu hover:border-primary/50 transition-colors duration-300">
+-              <div className="text-xs text-muted-foreground mb-2">Components</div>
++              <div className="text-xs text-muted-foreground mb-2">24x7 support</div>
+               <div className="space-y-3">
+-                <div className="flex items-center space-x-2">
+-                  <div className="w-3 h-3 bg-primary rounded"></div>
+-                  <div className="h-2 bg-muted rounded flex-1"></div>
+-                </div>
+-                <div className="flex items-center space-x-2">
+-                  <div className="w-3 h-3 bg-accent rounded"></div>
+-                  <div className="h-2 bg-muted rounded flex-1"></div>
+-                </div>
+-                <div className="flex items-center space-x-2">
+-                  <div className="w-3 h-3 bg-chart-2 rounded"></div>
+-                  <div className="h-2 bg-muted rounded flex-1"></div>
+-                </div>
+-              </div>
+-            </div>
+-            
+-            {/* Spacing Tokens */}
+-            <div className="floating-card absolute top-20 right-32 w-32 h-20 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-2xl shadow-lg p-4 transform-gpu hover:border-primary/50 transition-colors duration-300">
+-              <div className="text-xs text-muted-foreground mb-2">Spacing</div>
+-              <div className="space-y-1">
+-                <div className="h-1 bg-primary rounded w-4"></div>
+-                <div className="h-1 bg-primary rounded w-8"></div>
+-                <div className="h-1 bg-primary rounded w-12"></div>
+-                <div className="h-1 bg-primary rounded w-16"></div>
+-              </div>
+-            </div>
+-            
+-            {/* Icon Library */}
+-            <div className="floating-card absolute bottom-32 left-32 w-36 h-24 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-2xl shadow-lg p-4 transform-gpu hover:border-primary/50 transition-colors duration-300">
+-              <div className="text-xs text-muted-foreground mb-2">Icons</div>
+-              <div className="grid grid-cols-4 gap-2">
+-                <div className="w-4 h-4 bg-foreground/20 rounded"></div>
+-                <div className="w-4 h-4 bg-foreground/30 rounded"></div>
+-                <div className="w-4 h-4 bg-foreground/40 rounded"></div>
+-                <div className="w-4 h-4 bg-foreground/50 rounded"></div>
++                {["Monitoring", "On-site", "Recovery"].map((item) => (
++                  <div key={item} className="flex items-center space-x-2">
++                    <div className="w-3 h-3 bg-primary rounded"></div>
++                    <div className="h-2 bg-muted rounded flex-1"></div>
++                  </div>
++                ))}
+               </div>
+             </div>
+-            
+-            {/* Documentation Card */}
+-            <div className="floating-card absolute top-40 left-40 w-40 h-28 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-2xl shadow-lg p-4 transform-gpu hover:border-primary/50 transition-colors duration-300">
+-              <div className="text-xs text-muted-foreground mb-2">Docs</div>
+-              <div className="space-y-1">
+-                <div className="h-2 bg-muted rounded w-full"></div>
+-                <div className="h-2 bg-muted rounded w-3/4"></div>
+-                <div className="h-2 bg-muted rounded w-5/6"></div>
+-                <div className="h-2 bg-muted rounded w-2/3"></div>
+-              </div>
+-            </div>
+-            
+-            {/* Version Control */}
+-            <div className="floating-card absolute top-12 right-48 w-34 h-26 bg-card/80 backdrop-blur-sm border border-primary/20 rounded-2xl shadow-lg p-4 transform-gpu hover:border-primary/50 transition-colors duration-300">
+-              <div className="text-xs text-muted-foreground mb-2">Versions</div>
+-              <div className="space-y-2">
+-                <div className="flex items-center space-x-2">
+-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+-                  <div className="text-xs">v2.1.0</div>
+-                </div>
+-                <div className="flex items-center space-x-2">
+-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+-                  <div className="text-xs">v2.0.5</div>
+-                </div>
+-              </div>
+-            </div>
+-            
+-            {/* Connecting Lines */}
++
+             <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+               <defs>
+                 <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                   <stop offset="0%" stopColor="rgb(100, 100, 255)" stopOpacity="0.1" />
+                   <stop offset="50%" stopColor="rgb(150, 100, 255)" stopOpacity="0.4" />
+                   <stop offset="100%" stopColor="rgb(100, 100, 255)" stopOpacity="0.1" />
+                 </linearGradient>
+               </defs>
+               <line x1="50%" y1="50%" x2="20%" y2="20%" stroke="url(#lineGradient)" strokeWidth="2" className="animate-pulse" />
+-              <line x1="50%" y1="50%" x2="80%" y2="30%" stroke="url(#lineGradient)" strokeWidth="2" className="animate-pulse" style={{ animationDelay: '0.5s' }} />
+-              <line x1="50%" y1="50%" x2="25%" y2="75%" stroke="url(#lineGradient)" strokeWidth="2" className="animate-pulse" style={{ animationDelay: '1s' }} />
+-              <line x1="50%" y1="50%" x2="75%" y2="80%" stroke="url(#lineGradient)" strokeWidth="2" className="animate-pulse" style={{ animationDelay: '1.5s' }} />
++              <line x1="50%" y1="50%" x2="80%" y2="30%" stroke="url(#lineGradient)" strokeWidth="2" className="animate-pulse" style={{ animationDelay: "0.5s" }} />
++              <line x1="50%" y1="50%" x2="25%" y2="75%" stroke="url(#lineGradient)" strokeWidth="2" className="animate-pulse" style={{ animationDelay: "1s" }} />
++              <line x1="50%" y1="50%" x2="75%" y2="80%" stroke="url(#lineGradient)" strokeWidth="2" className="animate-pulse" style={{ animationDelay: "1.5s" }} />
+             </svg>
+-            
+-            {/* Background Particles */}
++
+             <div className="absolute inset-0 overflow-hidden pointer-events-none">
+               {[...Array(30)].map((_, i) => (
+                 <div
+                   key={i}
+                   className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
+                   style={{
+                     left: `${Math.random() * 100}%`,
+                     top: `${Math.random() * 100}%`,
+                     animationDelay: `${Math.random() * 3}s`,
+-                    animationDuration: `${2 + Math.random() * 3}s`
++                    animationDuration: `${2 + Math.random() * 3}s`,
+                   }}
+                 />
+               ))}
+             </div>
+           </div>
+         </motion.div>
+ 
+-        {/* Trusted By Section */}
+         <motion.div
+           className="mt-20 pt-12 border-t border-border/50"
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.6, delay: 0.5 }}
+         >
+-          <p className="text-sm text-muted-foreground mb-8">Trusted by government and industrial enterprises</p>
++          <p className="text-sm text-muted-foreground mb-8">Вендоры и платформы, с которыми работает Almadata</p>
+           <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+-            {["MosEnergy", "RosTech", "TransCorp", "InfraBuild", "StateNet", "IndustryTech"].map((company, index) => (
+-              <div
+-                key={index}
+-                className="text-xl font-semibold hover:text-primary transition-colors duration-300 cursor-pointer"
+-              >
++            {[
++              "HPE",
++              "Dell",
++              "Lenovo",
++              "Huawei",
++              "xFusion",
++              "IBM",
++              "Hitachi Vantara",
++              "Cisco",
++              "Supermicro",
++              "Fujitsu",
++              "NetApp",
++              "Pure Storage",
++              "EMC",
++              "Juniper",
++              "Fortinet",
++            ].map((company) => (
++              <div key={company} className="text-xl font-semibold hover:text-primary transition-colors duration-300 cursor-pointer">
+                 {company}
+               </div>
+             ))}
+           </div>
+         </motion.div>
+       </div>
+     </section>
+   );
+-}
+\ No newline at end of file
++}
+diff --git a/src/components/HowItWorksSection.tsx b/src/components/HowItWorksSection.tsx
+index d8a466c5f0b601171d5cb0279952e9cf8b90f260..bafddcddc7535fe045415018c42dbc56d0e41354 100644
+--- a/src/components/HowItWorksSection.tsx
++++ b/src/components/HowItWorksSection.tsx
+@@ -1,92 +1,83 @@
+ import { motion } from "motion/react";
+-import { ClipboardList, Wrench, CheckCircle2, Headphones } from "lucide-react";
++import { ClipboardList, Wrench, Headphones, BarChart3 } from "lucide-react";
+ 
+ const steps = [
+   {
+     icon: ClipboardList,
+-    title: "Requirements Analysis",
+-    description: "Comprehensive assessment of your infrastructure needs, capacity planning, and technical specifications.",
+-    step: "01"
++    title: "Анализ и планирование",
++    description: "Сбор данных по оборудованию, определение SLA, расчет буферного склада и план поддержки.",
++    step: "01",
+   },
+   {
+     icon: Wrench,
+-    title: "Deployment & Integration",
+-    description: "Professional installation, configuration, and integration of servers and equipment into your environment.",
+-    step: "02"
++    title: "Формирование и запуск",
++    description: "Запуск сервиса после договора, создание буферного склада и подключение профильных инженеров.",
++    step: "02",
+   },
+   {
+-    icon: CheckCircle2,
+-    title: "Testing & Validation",
+-    description: "Rigorous testing procedures to ensure all systems meet performance, security, and reliability standards.",
+-    step: "03"
++    icon: Headphones,
++    title: "Поддержка 24/7",
++    description: "Диагностика, удаленная помощь, выезд инженера, замена деталей и управление инцидентами.",
++    step: "03",
+   },
+   {
+-    icon: Headphones,
+-    title: "Ongoing Support",
+-    description: "Continuous monitoring, maintenance, and technical support with guaranteed response times.",
+-    step: "04"
+-  }
++    icon: BarChart3,
++    title: "Мониторинг и улучшение",
++    description: "Регулярные отчеты, статистика по SLA и рекомендации по профилактике и оптимизации.",
++    step: "04",
++  },
+ ];
+ 
+ export function HowItWorksSection() {
+   return (
+-    <section className="py-20 lg:py-32 relative overflow-hidden">
+-      {/* Background decoration */}
++    <section id="process" className="py-20 lg:py-32 relative overflow-hidden">
+       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background"></div>
+-      
++
+       <div className="container mx-auto px-4 relative z-10">
+         <motion.div
+           className="text-center mb-16"
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.6 }}
+         >
+           <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4">
+-            Service{" "}
+-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+-              delivery process
+-            </span>
++            Процесс работы
++            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> по TPM support</span>
+           </h2>
+           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
+-            Structured approach ensuring quality and reliability at every stage.
++            Прозрачная модель взаимодействия, ориентированная на SLA, минимизацию простоев и предсказуемую эксплуатацию.
+           </p>
+         </motion.div>
+ 
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+-          {/* Connection lines for desktop */}
+           <div className="hidden lg:block absolute top-20 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+-          
++
+           {steps.map((step, index) => (
+             <motion.div
+               key={index}
+               className="relative"
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.5, delay: index * 0.15 }}
+             >
+               <div className="text-center">
+-                {/* Step number */}
+                 <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 border-2 border-primary/30 relative z-10">
+-                  <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+-                    {step.step}
+-                  </span>
++                  <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{step.step}</span>
+                 </div>
+-                
+-                {/* Icon */}
++
+                 <div className="inline-flex items-center justify-center w-14 h-14 mb-4 rounded-2xl bg-primary/10 border border-primary/20 hover:bg-primary/20 hover:scale-110 transition-all duration-300">
+                   <step.icon className="h-7 w-7 text-primary" />
+                 </div>
+-                
+-                {/* Content */}
++
+                 <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                 <p className="text-sm text-muted-foreground">{step.description}</p>
+               </div>
+             </motion.div>
+           ))}
+         </div>
+       </div>
+     </section>
+   );
+ }
+diff --git a/src/components/PricingSection.tsx b/src/components/PricingSection.tsx
+index 6bab152e9da8df9277064290166149d977196889..e1e22ec8232ffccfee2db0d742ef24bd9a8fe6db 100644
+--- a/src/components/PricingSection.tsx
++++ b/src/components/PricingSection.tsx
+@@ -1,145 +1,136 @@
+ import { Button } from "./ui/button";
+ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+ import { Badge } from "./ui/badge";
+ import { Check } from "lucide-react";
+ import { motion } from "motion/react";
+ 
+ const plans = [
+   {
+-    name: "Standard Support",
+-    price: "Contact",
+-    description: "Essential support services for small deployments",
++    name: "Refurbished Servers",
++    price: "По запросу",
++    description: "Поставка и запуск enterprise refurbished оборудования",
+     features: [
+-      "Business hours support (9-18)",
+-      "Email and phone support",
+-      "4-hour response time",
+-      "Monthly health checks",
+-      "Basic monitoring included"
++      "Поставка за 1–2 недели при наличии",
++      "Снижение CAPEX относительно OEM",
++      "Конфигурации под DR / Backup / VDI",
++      "Тестирование и предпродажная проверка",
++      "Гарантийные условия под проект",
+     ],
+-    cta: "Request Quote",
+-    popular: false
++    cta: "Запросить предложение",
++    popular: false,
+   },
+   {
+-    name: "Professional Support",
+-    price: "Contact",
+-    description: "Comprehensive support for mission-critical systems",
++    name: "TPM Support 24x7",
++    price: "По SLA",
++    description: "Независимая поддержка серверов и СХД корпоративного класса",
+     features: [
+-      "24/7 technical support",
+-      "1-hour response time",
+-      "Dedicated support team",
+-      "Weekly infrastructure reports",
+-      "Advanced monitoring & alerts",
+-      "Preventive maintenance",
+-      "Priority spare parts"
++      "Экономия до 70% против OEM",
++      "Мультивендорная поддержка в одном контракте",
++      "Поддержка после EOSL",
++      "SLA 2/4/8 часов",
++      "Глобальная сеть запчастей",
++      "Выезд инженеров при необходимости",
++      "Гарантия до 10 лет",
+     ],
+-    cta: "Schedule Consultation",
+-    popular: true
++    cta: "Получить консультацию",
++    popular: true,
+   },
+   {
+-    name: "Enterprise Support",
++    name: "Infrastructure & DevOps",
+     price: "Custom",
+-    description: "Full-service infrastructure management",
++    description: "Оптимизация инфраструктуры и эксплуатация через DevOps практики",
+     features: [
+-      "Dedicated infrastructure team",
+-      "15-minute critical response",
+-      "On-site support available",
+-      "Custom SLA agreements",
+-      "Capacity planning services",
+-      "Migration assistance",
+-      "Quarterly business reviews"
++      "Infrastructure optimization",
++      "CI/CD и автоматизация deployment",
++      "Kubernetes / Docker / IaC",
++      "Monitoring и centralized logging",
++      "Backup & recovery стратегии",
++      "DevSecOps и обучение команды",
++      "Регулярная отчетность по SLA",
+     ],
+-    cta: "Contact Sales",
+-    popular: false
+-  }
++    cta: "Обсудить проект",
++    popular: false,
++  },
+ ];
+ 
+ export function PricingSection() {
+   return (
+     <section id="infrastructure" className="py-20 lg:py-32 relative overflow-hidden">
+-      {/* Background gradient */}
+       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/30"></div>
+-      
++
+       <div className="container mx-auto px-4 relative z-10">
+         <motion.div
+           className="text-center mb-16"
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.6 }}
+         >
+           <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4">
+-            Service{" "}
+-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+-              packages
+-            </span>
++            Пакеты услуг
++            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> для enterprise</span>
+           </h2>
+           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
+-            Flexible support packages tailored to your infrastructure requirements and business objectives.
++            Гибкие модели подключения под оборудование, SLA и требования к доступности инфраструктуры.
+           </p>
+         </motion.div>
+-        
++
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+           {plans.map((plan, index) => (
+             <motion.div
+               key={index}
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.5, delay: index * 0.1 }}
+               whileHover={{ scale: 1.03, y: -5 }}
+             >
+-              <Card 
++              <Card
+                 className={`relative h-full transition-all duration-300 ${
+-                  plan.popular 
+-                    ? 'border-primary/50 shadow-2xl shadow-primary/20 bg-gradient-to-b from-card to-primary/5' 
+-                    : 'border-border hover:border-primary/30 hover:shadow-xl'
++                  plan.popular
++                    ? "border-primary/50 shadow-2xl shadow-primary/20 bg-gradient-to-b from-card to-primary/5"
++                    : "border-border hover:border-primary/30 hover:shadow-xl"
+                 }`}
+               >
+                 {plan.popular && (
+                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+-                    <Badge className="bg-gradient-to-r from-primary to-accent px-4 py-1 shadow-lg">
+-                      Recommended
+-                    </Badge>
++                    <Badge className="bg-gradient-to-r from-primary to-accent px-4 py-1 shadow-lg">Приоритетное решение</Badge>
+                   </div>
+                 )}
+-                
++
+                 <CardHeader className="text-center pb-8 pt-8">
+                   <CardTitle className="text-xl mb-2">{plan.name}</CardTitle>
+                   <div className="mb-2">
+-                    <span className="text-4xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+-                      {plan.price}
+-                    </span>
++                    <span className="text-4xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">{plan.price}</span>
+                   </div>
+                   <CardDescription>{plan.description}</CardDescription>
+                 </CardHeader>
+-                
++
+                 <CardContent>
+                   <ul className="space-y-3 mb-8">
+                     {plan.features.map((feature, featureIndex) => (
+                       <li key={featureIndex} className="flex items-center">
+                         <div className="p-1 rounded-full bg-green-500/20 mr-3">
+                           <Check className="h-3 w-3 text-green-400" />
+                         </div>
+                         <span className="text-sm">{feature}</span>
+                       </li>
+                     ))}
+                   </ul>
+-                  <Button 
++                  <Button
+                     className={`w-full transition-all duration-300 hover:scale-105 active:scale-95 ${
+-                      plan.popular 
+-                        ? 'bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/50' 
+-                        : 'hover:bg-primary/10'
++                      plan.popular ? "bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/50" : "hover:bg-primary/10"
+                     }`}
+                     variant={plan.popular ? "default" : "outline"}
+                   >
+                     {plan.cta}
+                   </Button>
+                 </CardContent>
+               </Card>
+             </motion.div>
+           ))}
+         </div>
+       </div>
+     </section>
+   );
+ }
+diff --git a/src/components/TestimonialsSection.tsx b/src/components/TestimonialsSection.tsx
+index 73c39386427a54b339c2a26b6dccc08dcfb94669..beae36f2b3666d157c0fe7bc2faee948f9637fb7 100644
+--- a/src/components/TestimonialsSection.tsx
++++ b/src/components/TestimonialsSection.tsx
+@@ -1,113 +1,112 @@
+ import { Card, CardContent } from "./ui/card";
+ import { Avatar, AvatarFallback } from "./ui/avatar";
+ import { motion } from "motion/react";
+ 
+ const testimonials = [
+   {
+-    content: "OnePoint Support delivered a complete data center infrastructure upgrade on schedule. Their technical expertise and project management capabilities exceeded our expectations.",
+-    author: "Dmitry Volkov",
+-    role: "IT Director",
+-    company: "Industrial Holdings LLC",
+-    avatar: "DV"
++    content:
++      "Enterprise: развёрнут TPM-контракт для мультивендорной инфраструктуры с единым окном поддержки и прозрачной отчетностью по SLA.",
++    author: "Кейс 01",
++    role: "Enterprise",
++    company: "Инфраструктурный холдинг",
++    avatar: "E1",
+   },
+   {
+-    content: "The 24/7 support and rapid response times have been critical for our operations. OnePoint Support team demonstrated deep knowledge of enterprise infrastructure.",
+-    author: "Elena Petrova",
+-    role: "Chief Technology Officer",
+-    company: "State Energy Corp",
+-    avatar: "EP"
++    content:
++      "Banking: организована поддержка серверов 24x7, буферный склад запчастей и ускоренное восстановление критичных сервисов.",
++    author: "Кейс 02",
++    role: "Banking",
++    company: "Финансовая организация",
++    avatar: "B2",
+   },
+   {
+-    content: "Professional approach to capacity planning and infrastructure scaling. The team provided comprehensive solutions that addressed both current needs and future growth.",
+-    author: "Sergei Ivanov",
+-    role: "Infrastructure Manager",
+-    company: "Transportation Systems",
+-    avatar: "SI"
++    content:
++      "Government: подключена third-party maintenance модель после EOSL без срочного обновления всего парка оборудования.",
++    author: "Кейс 03",
++    role: "Government",
++    company: "Государственный сектор",
++    avatar: "G3",
+   },
+   {
+-    content: "Outstanding technical support and infrastructure management. OnePoint Support has become an integral part of our IT operations with their reliable and professional service.",
+-    author: "Marina Sokolova",
+-    role: "Operations Director",
+-    company: "Federal Data Center",
+-    avatar: "MS"
++    content:
++      "Construction / large business: поставлены refurbished серверы для резервного контура и пиковых нагрузок проекта.",
++    author: "Кейс 04",
++    role: "Construction",
++    company: "Промышленно-строительная группа",
++    avatar: "C4",
+   },
+   {
+-    content: "The migration to new server infrastructure was executed flawlessly with zero downtime. Exceptional planning and execution by the OnePoint Support engineering team.",
+-    author: "Viktor Kuznetsov",
+-    role: "Head of IT",
+-    company: "Manufacturing Group",
+-    avatar: "VK"
++    content:
++      "Travel platforms: внедрены DevOps услуги, CI/CD и observability для стабильных релизов и контроля производительности.",
++    author: "Кейс 05",
++    role: "Travel platforms",
++    company: "Цифровая платформа",
++    avatar: "T5",
+   },
+   {
+-    content: "OnePoint Support's proactive monitoring and maintenance approach has significantly improved our infrastructure reliability and reduced operational costs.",
+-    author: "Olga Romanova",
+-    role: "IT Service Manager",
+-    company: "Regional Government",
+-    avatar: "OR"
+-  }
++    content:
++      "Large business: реализована инфраструктурная оптимизация и централизованная мультивендорная поддержка в одном договоре.",
++    author: "Кейс 06",
++    role: "Large business",
++    company: "Корпоративный клиент",
++    avatar: "L6",
++  },
+ ];
+ 
+ export function TestimonialsSection() {
+   return (
+-    <section id="clients" className="py-20 lg:py-32 relative overflow-hidden">
+-      {/* Background decoration */}
++    <section id="cases" className="py-20 lg:py-32 relative overflow-hidden">
+       <div className="absolute inset-0 bg-gradient-to-b from-muted/30 to-background"></div>
+       <div className="absolute top-1/2 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+-      
++
+       <div className="container mx-auto px-4 relative z-10">
+         <motion.div
+           className="text-center mb-16"
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.6 }}
+         >
+           <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4">
+-            Trusted by{" "}
+-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+-              enterprise clients
+-            </span>
++            Отрасли и
++            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> кейсы внедрения</span>
+           </h2>
+           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
+-            Government agencies and industrial organizations rely on our infrastructure expertise and support services.
++            Опыт работы в enterprise, banking, government, construction и travel-платформах.
+           </p>
+         </motion.div>
+-        
++
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+           {testimonials.map((testimonial, index) => (
+             <motion.div
+               key={index}
+               initial={{ opacity: 0, y: 30 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true, margin: "-50px" }}
+               transition={{ duration: 0.5, delay: index * 0.1 }}
+               whileHover={{ scale: 1.03, y: -5 }}
+             >
+               <Card className="h-full border-border hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 bg-card/50 backdrop-blur-sm">
+                 <CardContent className="p-6">
+                   <div className="mb-4 text-4xl text-primary/30">"</div>
+-                  <blockquote className="text-sm mb-6 text-muted-foreground">
+-                    {testimonial.content}
+-                  </blockquote>
++                  <blockquote className="text-sm mb-6 text-muted-foreground">{testimonial.content}</blockquote>
+                   <div className="flex items-center space-x-3">
+                     <Avatar className="h-10 w-10 border-2 border-primary/20">
+-                      <AvatarFallback className="bg-gradient-to-br from-primary/20 to-accent/20 text-primary">
+-                        {testimonial.avatar}
+-                      </AvatarFallback>
++                      <AvatarFallback className="bg-gradient-to-br from-primary/20 to-accent/20 text-primary">{testimonial.avatar}</AvatarFallback>
+                     </Avatar>
+                     <div>
+                       <div className="font-medium text-sm">{testimonial.author}</div>
+                       <div className="text-xs text-muted-foreground">
+                         {testimonial.role}, {testimonial.company}
+                       </div>
+                     </div>
+                   </div>
+                 </CardContent>
+               </Card>
+             </motion.div>
+           ))}
+         </div>
+       </div>
+     </section>
+   );
+ }
+ 
+EOF
+)
