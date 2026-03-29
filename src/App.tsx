@@ -1,0 +1,27 @@
+import { Header } from "./components/Header";
+import { HeroSection } from "./components/HeroSection";
+import { FeaturesSection } from "./components/FeaturesSection";
+import { HowItWorksSection } from "./components/HowItWorksSection";
+import { CodeSection } from "./components/CodeSection";
+import { PricingSection } from "./components/PricingSection";
+import { TestimonialsSection } from "./components/TestimonialsSection";
+import { CTABanner } from "./components/CTABanner";
+import { Footer } from "./components/Footer";
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Header />
+      <main className="relative">
+        <HeroSection />
+        <FeaturesSection />
+        <HowItWorksSection />
+        <CodeSection />
+        <PricingSection />
+        <TestimonialsSection />
+        <CTABanner />
+      </main>
+      <Footer />
+    </div>
+  );
+}
