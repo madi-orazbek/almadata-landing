@@ -17,7 +17,7 @@ Only replace the textual content.
 
 Content Guidelines
 
-The website belongs to OnePoint Support, a company providing centralized IT infrastructure support (servers, storage systems, networking).
+The website belongs to onepoint, a company providing centralized IT infrastructure support (servers, storage systems, networking).
 
 The updated content must:
 

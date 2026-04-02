@@ -1,14 +1,14 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { 
-  Server, 
-  Database, 
-  Shield, 
-  Clock, 
-  Network, 
+import {
+  Server,
+  Database,
+  Shield,
+  Clock,
+  Network,
   HeadphonesIcon,
   Gauge,
-  Settings
+  Settings,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useRef, useState } from "react";
@@ -16,55 +16,62 @@ import { useRef, useState } from "react";
 const features = [
   {
     icon: Server,
-    title: "Server Infrastructure",
-    description: "Enterprise-grade server solutions including rack servers, blade systems, and modular infrastructure tailored to your requirements.",
-    badge: "Core"
-  },
-  {
-    icon: Database,
-    title: "Storage Systems",
-    description: "Scalable storage arrays, SAN/NAS solutions, and backup systems ensuring data integrity and availability.",
-    badge: "Core"
-  },
-  {
-    icon: Network,
-    title: "Network Equipment",
-    description: "Complete networking solutions from switches and routers to load balancers and network security appliances.",
-    badge: "Core"
-  },
-  {
-    icon: HeadphonesIcon,
-    title: "24/7 Technical Support",
-    description: "Round-the-clock technical assistance with guaranteed response times and dedicated support team.",
-    badge: "Premium"
+    title: "Enterprise Refurbished Servers",
+    description: "Восстановленные и протестированные enterprise servers с поставкой из наличия за 1–2 недели для масштабирования и вторичных контуров.",
+    badge: "Core",
   },
   {
     icon: Settings,
-    title: "Infrastructure Management",
-    description: "Comprehensive management services including monitoring, maintenance, and optimization of your IT infrastructure.",
-    badge: "Premium"
+    title: "TPM (Third-Party Maintenance)",
+    description: "Независимая TPM support: экономия до 70% против OEM, поддержка после EOSL и мультивендорная поддержка в одном контракте.",
+    badge: "Core",
   },
   {
-    icon: Shield,
-    title: "Security & Compliance",
-    description: "Implementation of security measures and compliance with industry standards including ISO 27001 and government regulations.",
-    badge: "Enterprise"
+    icon: HeadphonesIcon,
+    title: "Поддержка серверов 24x7",
+    description: "Круглосуточная техническая поддержка, мониторинг инфраструктуры, реагирование по SLA и восстановление сервисов.",
+    badge: "Premium",
+  },
+  {
+    icon: Network,
+    title: "Buffer Stock / ЗИП",
+    description: "Буферный склад запчастей рядом с площадкой заказчика, автоматическое пополнение и быстрое восстановление оборудования.",
+    badge: "Premium",
+  },
+  {
+    icon: Database,
+    title: "Backup / DR / VDI",
+    description: "Инфраструктура для backup, DR-контуров, VDI и тестовых сред с прогнозируемой стоимостью владения.",
+    badge: "Enterprise",
   },
   {
     icon: Gauge,
-    title: "Performance Monitoring",
-    description: "Real-time monitoring and analytics of infrastructure performance with proactive issue detection and resolution.",
-    badge: "Premium"
+    title: "Infrastructure Optimization",
+    description: "Аудит инфраструктуры, оптимизация ресурсов и план развития мощностей без избыточных капитальных затрат.",
+    badge: "Enterprise",
+  },
+  {
+    icon: Shield,
+    title: "SLA и гарантия",
+    description: "Гибкие SLA 2/4/8 часов, выезд инженеров при необходимости и гарантия до 10 лет по условиям договора.",
+    badge: "Enterprise",
   },
   {
     icon: Clock,
-    title: "SLA Guarantees",
-    description: "Guaranteed uptime with clear service level agreements and comprehensive incident response procedures.",
-    badge: "Enterprise"
-  }
+    title: "DevOps as a Service",
+    description: "DevOps услуги: CI/CD, Kubernetes, IaC, observability, centralized logging и DevSecOps для стабильной эксплуатации.",
+    badge: "DevOps",
+  },
 ];
 
-function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
+const summary = [
+  "Поставка оборудования под проект и сроки бизнеса",
+  "Одна точка входа для поддержки нескольких вендоров",
+  "Буферный склад и SLA под критичные сервисы",
+  "DevOps-практики для устойчивой эксплуатации",
+];
+
+function FeatureCard({ feature, index }: { feature: (typeof features)[0]; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -92,7 +99,6 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Cursor-aware glow effect */}
         {isHovered && (
           <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
@@ -124,10 +130,9 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
 export function FeaturesSection() {
   return (
     <section id="services" className="py-20 lg:py-32 relative overflow-hidden">
-      {/* Background decoration */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           className="text-center mb-16"
@@ -137,16 +142,21 @@ export function FeaturesSection() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4">
-            Comprehensive{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              infrastructure services
-            </span>
+            Ключевые направления
+            <span className="text-brand-gradient"> onepoint</span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
-            Complete solutions for enterprise IT infrastructure deployment, management, and support 
-            with guaranteed service levels.
+            Поставка refurbished серверов, third-party maintenance, infrastructure support и DevOps экспертиза
+            для enterprise-инфраструктуры.
           </p>
         </motion.div>
+        <div className="mb-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {summary.map((item) => (
+            <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm text-muted-foreground backdrop-blur-sm">
+              {item}
+            </div>
+          ))}
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} />
