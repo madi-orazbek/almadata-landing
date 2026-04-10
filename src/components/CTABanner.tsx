@@ -3,8 +3,8 @@ import { ArrowRight, Mail, Phone, Globe } from "lucide-react";
 import { motion } from "motion/react";
 
 const contacts = [
-  { icon: Mail, label: "info@onepoint.kz" },
-  { icon: Phone, label: "+7 701 137 22 33" },
+  { icon: Mail, label: "onepoint360.kz@gmail.com" },
+  { icon: Phone, label: "+7 778 101 8007" },
   { icon: Globe, label: "www.onepoint.kz" },
 ];
 

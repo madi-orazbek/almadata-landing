@@ -45,8 +45,8 @@ export function Header() {
             <span>Услуги DevOps</span>
           </div>
           <div className="flex items-center gap-4">
-            <span>info@onepoint.kz</span>
-            <span className="hidden sm:inline">+7 701 137 22 33</span>
+            <span>onepoint360.kz@gmail.com</span>
+            <span className="hidden sm:inline">+7 778 101 8007</span>
           </div>
         </div>
       </div>

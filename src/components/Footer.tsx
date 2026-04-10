@@ -38,8 +38,8 @@ const socialLinks = [
 ];
 
 const contacts = [
-  { icon: Mail, label: "Эл. почта", value: "info@onepoint.kz" },
-  { icon: Phone, label: "Телефон", value: "+7 701 137 22 33" },
+  { icon: Mail, label: "Эл. почта", value: "onepoint360.kz@gmail.com" },
+  { icon: Phone, label: "Телефон", value: "+7 778 101 8007" },
   { icon: Globe, label: "Сайт", value: "www.onepoint.kz" },
 ];
 
@@ -66,34 +66,37 @@ export function Footer() {
               Enterprise Refurbished оборудования, независимую поддержку и DevOps-экспертизу.
             </p>
 
-            <div className="mb-6 grid gap-3">
+            <div className="mb-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
               {contacts.map((item) => (
-                <div key={item.label} className="flex items-center gap-3 rounded-2xl border border-black/8 bg-white/70 px-4 py-3 dark:border-white/10 dark:bg-white/[0.05]">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
+                <div key={item.label} className="flex h-full min-h-[88px] items-center gap-3 rounded-2xl border border-black/8 bg-white/70 px-4 py-3 dark:border-white/10 dark:bg-white/[0.05]">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
                     <item.icon className="h-4 w-4" />
                   </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{item.label}</div>
-                    <div className="text-sm">{item.value}</div>
+                  <div className="min-w-0">
+                    <div className="text-xs text-muted-foreground">{item.label}</div>
+                    <div className="mt-1 text-sm break-all">{item.value}</div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-2 mb-6">
-              <Input placeholder="Email для связи" className="max-w-xs bg-white/80 border-black/10 focus:border-black/30 dark:bg-white/[0.06] dark:border-white/10 dark:focus:border-white/20" />
-              <Button className="bg-gradient-to-b from-white to-zinc-100 text-black border border-black/10 hover:shadow-lg hover:shadow-black/8 transition-all duration-300 dark:border-white/12 dark:bg-gradient-to-b dark:from-zinc-900 dark:to-black dark:text-white dark:hover:shadow-white/10">
+            <div className="mb-6 grid max-w-md grid-cols-1 items-stretch gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
+              <Input
+                placeholder="Email для связи"
+                className="h-11 w-full bg-white/80 border-black/10 focus:border-black/30 dark:bg-white/[0.06] dark:border-white/10 dark:focus:border-white/20"
+              />
+              <Button className="h-11 bg-gradient-to-b from-white to-zinc-100 text-black border border-black/10 hover:shadow-lg hover:shadow-black/8 transition-all duration-300 dark:border-white/12 dark:bg-gradient-to-b dark:from-zinc-900 dark:to-black dark:text-white dark:hover:shadow-white/10">
                 Связаться
               </Button>
             </div>
 
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center gap-3">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-9 h-9 rounded-lg bg-white/70 hover:bg-white flex items-center justify-center transition-all duration-300 hover:scale-110 border border-black/8 hover:border-black/20 dark:border-white/10 dark:bg-white/[0.05] dark:hover:bg-white/[0.08] dark:hover:border-white/20"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-black/8 bg-white/70 transition-all duration-300 hover:scale-110 hover:border-black/20 hover:bg-white dark:border-white/10 dark:bg-white/[0.05] dark:hover:border-white/20 dark:hover:bg-white/[0.08]"
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
