@@ -40,12 +40,12 @@ export function Header() {
       <div className="border-b border-black/5 bg-white/60 backdrop-blur-md dark:border-white/8 dark:bg-white/[0.03]">
         <div className="container mx-auto flex h-10 items-center justify-between px-4 text-xs text-muted-foreground lg:px-8">
           <div className="hidden sm:flex items-center gap-4">
-            <span>Refurbished servers</span>
-            <span>TPM support 24x7</span>
-            <span>DevOps services</span>
+            <span>Refurbished серверы</span>
+            <span>Поддержка 24×7</span>
+            <span>Услуги DevOps</span>
           </div>
           <div className="flex items-center gap-4">
-            <span>info@almadata.kz</span>
+            <span>info@onepoint.kz</span>
             <span className="hidden sm:inline">+7 701 137 22 33</span>
           </div>
         </div>
@@ -62,8 +62,8 @@ export function Header() {
               <div className="h-3 w-3 rounded-full bg-white dark:bg-black"></div>
             </div>
             <div>
-              <div className="font-semibold text-lg leading-none">Almadata</div>
-              <div className="hidden text-[11px] text-muted-foreground sm:block">Infrastructure lifecycle partner</div>
+              <div className="font-semibold text-lg leading-none">Onepoint</div>
+              <div className="hidden text-[11px] text-muted-foreground sm:block">Партнёр по жизненному циклу ИТ-инфраструктуры</div>
             </div>
           </motion.div>
           <nav className="hidden md:flex items-center space-x-6">

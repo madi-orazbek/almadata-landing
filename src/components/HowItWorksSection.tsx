@@ -5,7 +5,7 @@ const steps = [
   {
     icon: ClipboardList,
     title: "Анализ и планирование",
-    description: "Сбор данных по оборудованию, определение SLA, расчет буферного склада и план поддержки.",
+    description: "Сбор данных по оборудованию, фиксация SLA, расчёт буферного склада и план обслуживания.",
     step: "01",
   },
   {
@@ -16,23 +16,23 @@ const steps = [
   },
   {
     icon: Headphones,
-    title: "Поддержка 24/7",
-    description: "Диагностика, удаленная помощь, выезд инженера, замена деталей и управление инцидентами.",
+    title: "Поддержка 24×7",
+    description: "Диагностика, удалённая помощь, выезд инженера, замена комплектующих и управление инцидентами.",
     step: "03",
   },
   {
     icon: BarChart3,
     title: "Мониторинг и улучшение",
-    description: "Регулярные отчеты, статистика по SLA и рекомендации по профилактике и оптимизации.",
+    description: "Журнал инцидентов, выполненные работы и рекомендации по профилактике и оптимизации.",
     step: "04",
   },
 ];
 
 const serviceMarks = [
-  "SLA 2/4/8 часов",
-  "Buffer stock / ЗИП",
+  "Фиксированные SLA",
+  "Буферный склад комплектующих",
   "Удаленная диагностика",
-  "Отчетность и рекомендации",
+  "Отчётность и рекомендации",
 ];
 
 export function HowItWorksSection() {
@@ -50,7 +50,7 @@ export function HowItWorksSection() {
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4">
             Процесс работы
-            <span className="text-brand-gradient"> по TPM support</span>
+            <span className="text-brand-gradient"> по сопровождению</span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
             Прозрачная модель взаимодействия, ориентированная на SLA, минимизацию простоев и предсказуемую эксплуатацию.

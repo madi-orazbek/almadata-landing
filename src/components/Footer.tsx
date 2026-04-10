@@ -7,14 +7,14 @@ import { motion } from "motion/react";
 const footerLinks = {
   services: [
     { label: "Refurbished серверы", href: "#services" },
-    { label: "TPM support", href: "#services" },
-    { label: "Поддержка 24x7", href: "#services" },
+    { label: "Независимая поддержка ИТ-оборудования", href: "#services" },
+    { label: "Поддержка 24×7", href: "#services" },
     { label: "DevOps услуги", href: "#devops" },
   ],
   resources: [
-    { label: "Infrastructure support", href: "#" },
+    { label: "Поддержка инфраструктуры", href: "#" },
     { label: "SLA и отчётность", href: "#" },
-    { label: "Vendor coverage", href: "#" },
+    { label: "Поддерживаемые вендоры", href: "#" },
     { label: "Техническая документация", href: "#" },
   ],
   company: [
@@ -31,16 +31,16 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Youtube, href: "#", label: "YouTube" },
+  { icon: Twitter, href: "#", label: "Твиттер" },
+  { icon: Github, href: "#", label: "Гитхаб" },
+  { icon: Linkedin, href: "#", label: "Линкедин" },
+  { icon: Youtube, href: "#", label: "Ютуб" },
 ];
 
 const contacts = [
-  { icon: Mail, label: "Email", value: "info@almadata.kz" },
-  { icon: Phone, label: "Phone", value: "+7 701 137 22 33" },
-  { icon: Globe, label: "Website", value: "www.almadata.kz" },
+  { icon: Mail, label: "Эл. почта", value: "info@onepoint.kz" },
+  { icon: Phone, label: "Телефон", value: "+7 701 137 22 33" },
+  { icon: Globe, label: "Сайт", value: "www.onepoint.kz" },
 ];
 
 export function Footer() {
@@ -57,13 +57,13 @@ export function Footer() {
                 <div className="h-3 w-3 rounded-full bg-white" />
               </div>
               <div>
-                <span className="font-semibold text-lg">Almadata</span>
-                <p className="text-xs text-muted-foreground">Infrastructure lifecycle partner</p>
+                <span className="font-semibold text-lg">Onepoint</span>
+                <p className="text-xs text-muted-foreground">Партнёр по жизненному циклу ИТ-инфраструктуры</p>
               </div>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md text-sm">
-              Almadata помогает компаниям эффективно развивать и поддерживать IT-инфраструктуру, сочетая поставку
-              enterprise refurbished оборудования, независимую TPM-поддержку и DevOps-экспертизу.
+              Onepoint помогает компаниям эффективно развивать и поддерживать ИТ-инфраструктуру, сочетая поставку
+              Enterprise Refurbished оборудования, независимую поддержку и DevOps-экспертизу.
             </p>
 
             <div className="mb-6 grid gap-3">
@@ -104,7 +104,7 @@ export function Footer() {
           </motion.div>
 
           <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
-            <h4 className="font-medium mb-4">Services</h4>
+            <h4 className="font-medium mb-4">Услуги</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
@@ -117,7 +117,7 @@ export function Footer() {
           </motion.div>
 
           <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
-            <h4 className="font-medium mb-4">Resources</h4>
+            <h4 className="font-medium mb-4">Материалы</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
@@ -130,7 +130,7 @@ export function Footer() {
           </motion.div>
 
           <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
-            <h4 className="font-medium mb-4">Company</h4>
+            <h4 className="font-medium mb-4">Компания</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
@@ -143,7 +143,7 @@ export function Footer() {
           </motion.div>
 
           <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}>
-            <h4 className="font-medium mb-4">Legal</h4>
+            <h4 className="font-medium mb-4">Документы</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
@@ -159,13 +159,13 @@ export function Footer() {
         <Separator className="mb-8 bg-border/50" />
 
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground mb-4 md:mb-0">© 2026 Almadata. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground mb-4 md:mb-0">© 2026 Onepoint. Все права защищены.</p>
           <div className="flex items-center space-x-6 text-sm text-muted-foreground">
-            <span>TPM support</span>
+            <span>Независимая поддержка</span>
             <span>·</span>
-            <span>Infrastructure support</span>
+            <span>Поддержка инфраструктуры</span>
             <span>·</span>
-            <span>DevOps services</span>
+            <span>Услуги DevOps</span>
           </div>
         </div>
       </div>

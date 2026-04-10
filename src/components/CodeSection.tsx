@@ -3,34 +3,34 @@ import { Button } from "./ui/button";
 import { Copy, Check, Server, Workflow, Shield, ChartNoAxesCombined } from "lucide-react";
 import { motion } from "motion/react";
 
-const specExample = `DevOps & Infrastructure Stack
+const specExample = `Стек DevOps и инфраструктуры
 
-Cloud: AWS, Azure
-Virtualization: Proxmox VE, VMware
-OS: Linux, Windows
-Containers: Kubernetes, Docker Swarm
-IaC: Terraform, Ansible, Helm
-Observability: Prometheus, Grafana, Loki, ELK
+Облако: AWS, Azure
+Виртуализация: Proxmox VE, VMware
+ОС: Linux, Windows
+Контейнеры: Kubernetes, Docker Swarm
+Инфраструктура как код: Terraform, Ansible, Helm
+Мониторинг: Prometheus, Grafana, Loki, ELK
 CI/CD: Jenkins, GitLab CI, Argo CD, Bitbucket Pipelines
-Security: Vault, Keycloak
-Data: PostgreSQL, MS SQL Server
-Web: IIS, Apache, Nginx`;
+Безопасность: Vault, Keycloak
+Базы данных: PostgreSQL, MS SQL Server
+Веб-серверы: IIS, Apache, Nginx`;
 
 const pillars = [
   {
     icon: Workflow,
-    title: "CI/CD и delivery",
-    description: "Пайплайны, release-процессы, GitOps и автоматизация выката между средами.",
+    title: "CI/CD и поставка изменений",
+    description: "Пайплайны, процессы релизов, GitOps и автоматизация выката между средами.",
   },
   {
     icon: Shield,
     title: "Надежность и безопасность",
-    description: "Policy, secrets management, доступы, аудит и DevSecOps-практики.",
+    description: "Политики, управление секретами, доступы, аудит и DevSecOps-практики.",
   },
   {
     icon: ChartNoAxesCombined,
     title: "Наблюдаемость и SLA",
-    description: "Monitoring, centralized logging, алертинг и контроль стабильности сервисов.",
+    description: "Мониторинг, централизованное логирование, алертинг и контроль стабильности сервисов.",
   },
 ];
 
@@ -49,8 +49,8 @@ export function CodeSection() {
     const lines = [
       "Анализ CI/CD контура...",
       "✓ Проверка IaC и Kubernetes выполнена",
-      "✓ Мониторинг и centralized logging спроектированы",
-      "✓ Backup / recovery сценарии согласованы",
+      "✓ Мониторинг и централизованное логирование спроектированы",
+      "✓ Сценарии резервного копирования и восстановления согласованы",
       "✓ DevSecOps требования учтены",
       "План внедрения готов",
     ];
@@ -71,12 +71,12 @@ export function CodeSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-6">
-              DevOps as a
-              <span className="text-brand-gradient"> Service</span>
+              Услуги
+              <span className="text-brand-gradient"> DevOps</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
-              15+ лет в IT и 5+ лет в DevOps: автоматизация CI/CD, инфраструктура как код, observability,
-              безопасность и стабильная эксплуатация enterprise платформ.
+              15+ лет в ИТ и 5+ лет в DevOps: автоматизация CI/CD, инфраструктура как код, мониторинг,
+              безопасность процессов и стабильная эксплуатация корпоративных платформ.
             </p>
             <div className="grid gap-4 mb-8">
               {pillars.map((pillar) => (
@@ -96,9 +96,9 @@ export function CodeSection() {
             <ul className="space-y-3 mb-8">
               {[
                 "Внедрение и автоматизация CI/CD",
-                "Kubernetes / Docker и IaC (Terraform, Ansible)",
-                "Monitoring, centralized logging, DevSecOps",
-                "Обучение команды и автоматизация deployment",
+                "Kubernetes и контейнеризация",
+                "Мониторинг и логирование, безопасность процессов",
+                "Обучение команды и автоматизация развёртывания",
               ].map((item, index) => (
                 <motion.li
                   key={index}
@@ -171,8 +171,8 @@ export function CodeSection() {
 
               <div className="border-t border-white/10 bg-background/30 px-6 py-5">
                 <p className="text-sm leading-6 text-muted-foreground">
-                  Подключаемся как к существующему production-контуру, так и к запуску новой инфраструктуры: от аудита и
-                  проектирования до handover и операционной поддержки.
+                  Подключаемся как к существующему рабочему контуру, так и к запуску новой инфраструктуры: от аудита и
+                  проектирования до передачи в эксплуатацию и операционной поддержки.
                 </p>
               </div>
 
