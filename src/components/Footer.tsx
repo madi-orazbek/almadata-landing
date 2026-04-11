@@ -1,5 +1,3 @@
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
 import { Mail, Phone, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
@@ -59,40 +57,6 @@ export function Footer() {
               Enterprise Refurbished оборудования, независимую поддержку и DevOps-экспертизу.
             </p>
 
-            <div className="mb-6 flex flex-col gap-3 md:flex-row md:flex-wrap lg:flex-nowrap">
-              {contacts.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="flex min-h-[88px] flex-1 items-center gap-3 rounded-2xl border border-black/8 bg-white/70 px-4 py-3 transition-all duration-300 hover:border-black/20 hover:bg-white dark:border-white/10 dark:bg-white/[0.05] dark:hover:border-white/20 dark:hover:bg-white/[0.08] md:basis-[calc(50%-0.375rem)] lg:basis-0"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
-                    <item.icon className="h-4 w-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-xs text-muted-foreground">{item.label}</div>
-                    <div className="mt-1 text-sm break-all">{item.value}</div>
-                  </div>
-                </a>
-              ))}
-            </div>
-
-            <div className="grid max-w-md grid-cols-1 items-stretch gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
-              <Input
-                placeholder="Email для связи"
-                className="h-11 w-full bg-white/80 border-black/10 focus:border-black/30 dark:bg-white/[0.06] dark:border-white/10 dark:focus:border-white/20"
-              />
-              <Button
-                asChild
-                className="h-11 bg-gradient-to-b from-white to-zinc-100 text-black border border-black/10 hover:shadow-lg hover:shadow-black/8 transition-all duration-300 dark:border-white/12 dark:bg-gradient-to-b dark:from-zinc-900 dark:to-black dark:text-white dark:hover:shadow-white/10"
-              >
-                <a href="https://wa.me/77781018007" target="_blank" rel="noreferrer">
-                  Связаться
-                </a>
-              </Button>
-            </div>
           </motion.div>
 
           <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
@@ -146,6 +110,28 @@ export function Footer() {
               ))}
             </ul>
           </motion.div>
+        </div>
+
+        <div className="mb-10 flex flex-col justify-between gap-3 md:flex-row">
+          {contacts.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+              className="flex min-h-[88px] min-w-0 flex-1 items-center gap-3 rounded-2xl border border-black/8 bg-white/70 px-5 py-4 transition-all duration-300 hover:border-black/20 hover:bg-white dark:border-white/10 dark:bg-white/[0.05] dark:hover:border-white/20 dark:hover:bg-white/[0.08] md:min-w-[220px]"
+            >
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
+                <item.icon className="h-4 w-4" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-xs text-muted-foreground">{item.label}</div>
+                <div className="mt-1 text-sm [word-break:normal] [overflow-wrap:normal] md:whitespace-nowrap">
+                  {item.value}
+                </div>
+              </div>
+            </a>
+          ))}
         </div>
 
         <Separator className="mb-8 bg-border/50" />
