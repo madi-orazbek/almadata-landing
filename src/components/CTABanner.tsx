@@ -3,9 +3,9 @@ import { ArrowRight, Mail, Phone, Globe } from "lucide-react";
 import { motion } from "motion/react";
 
 const contacts = [
-  { icon: Mail, label: "info@almadata.kz" },
-  { icon: Phone, label: "+7 701 137 22 33" },
-  { icon: Globe, label: "www.almadata.kz" },
+  { icon: Mail, label: "onepoint360.kz@gmail.com" },
+  { icon: Phone, label: "+7 778 101 8007" },
+  { icon: Globe, label: "www.onepoint.kz" },
 ];
 
 export function CTABanner() {
@@ -26,11 +26,11 @@ export function CTABanner() {
         >
           <h2 className="text-3xl md:text-4xl lg:text-6xl tracking-tight mb-6">
             Готовы снизить TCO и усилить
-            <span className="text-brand-gradient animate-gradient"> infrastructure support</span>
+            <span className="text-brand-gradient animate-gradient"> поддержку ИТ-инфраструктуры</span>
             ?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Almadata сочетает enterprise refurbished поставки, TPM support и DevOps услуги для надежной работы
+            Onepoint сочетает поставки Enterprise Refurbished, независимую поддержку ИТ-оборудования и услуги DevOps для надёжной работы
             критичных сервисов бизнеса.
           </p>
           <div className="mb-8 grid gap-4 md:grid-cols-3">
@@ -48,7 +48,7 @@ export function CTABanner() {
               asChild
             >
               <a href="#contacts">
-                Получить консультацию
+                Оставить заявку
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </a>
             </Button>
@@ -58,11 +58,11 @@ export function CTABanner() {
               className="w-full sm:w-auto border-black/10 bg-white/40 hover:bg-white hover:border-black/20 transition-all duration-300 hover:scale-105 active:scale-95 text-lg px-8 py-6 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.06] dark:hover:border-white/20"
               asChild
             >
-              <a href="#packages">Запросить предложение</a>
+              <a href="#contacts">Запросить предложение</a>
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-6">
-            TPM support · поддержка серверов 24x7 · SLA 2/4/8 · мультивендорная поддержка
+            Поддержка 24×7 · Гарантия до 10 лет · SLA с фиксированными метриками · Мультивендорное сопровождение
           </p>
         </motion.div>
       </div>

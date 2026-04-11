@@ -1,20 +1,18 @@
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
-import { Github, Twitter, Linkedin, Youtube, Mail, Phone, Globe } from "lucide-react";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
 
 const footerLinks = {
   services: [
     { label: "Refurbished серверы", href: "#services" },
-    { label: "TPM support", href: "#services" },
-    { label: "Поддержка 24x7", href: "#services" },
+    { label: "Независимая поддержка ИТ-оборудования", href: "#services" },
+    { label: "Поддержка 24×7", href: "#services" },
     { label: "DevOps услуги", href: "#devops" },
   ],
   resources: [
-    { label: "Infrastructure support", href: "#" },
+    { label: "Поддержка инфраструктуры", href: "#" },
     { label: "SLA и отчётность", href: "#" },
-    { label: "Vendor coverage", href: "#" },
+    { label: "Поддерживаемые вендоры", href: "#" },
     { label: "Техническая документация", href: "#" },
   ],
   company: [
@@ -30,17 +28,10 @@ const footerLinks = {
   ],
 };
 
-const socialLinks = [
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Youtube, href: "#", label: "YouTube" },
-];
-
 const contacts = [
-  { icon: Mail, label: "Email", value: "info@almadata.kz" },
-  { icon: Phone, label: "Phone", value: "+7 701 137 22 33" },
-  { icon: Globe, label: "Website", value: "www.almadata.kz" },
+  { icon: Mail, label: "Эл. почта", value: "onepoint360.kz@gmail.com", href: "mailto:onepoint360.kz@gmail.com" },
+  { icon: Phone, label: "Телефон", value: "+7 778 101 8007", href: "tel:+77781018007" },
+  { icon: MessageCircle, label: "WhatsApp", value: "Написать в WhatsApp", href: "https://wa.me/77781018007" },
 ];
 
 export function Footer() {
@@ -57,54 +48,19 @@ export function Footer() {
                 <div className="h-3 w-3 rounded-full bg-white" />
               </div>
               <div>
-                <span className="font-semibold text-lg">Almadata</span>
-                <p className="text-xs text-muted-foreground">Infrastructure lifecycle partner</p>
+                <span className="font-semibold text-lg">Onepoint</span>
+                <p className="text-xs text-muted-foreground">Партнёр по жизненному циклу ИТ-инфраструктуры</p>
               </div>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md text-sm">
-              Almadata помогает компаниям эффективно развивать и поддерживать IT-инфраструктуру, сочетая поставку
-              enterprise refurbished оборудования, независимую TPM-поддержку и DevOps-экспертизу.
+              Onepoint помогает компаниям эффективно развивать и поддерживать ИТ-инфраструктуру, сочетая поставку
+              Enterprise Refurbished оборудования, независимую поддержку и DevOps-экспертизу.
             </p>
 
-            <div className="mb-6 grid gap-3">
-              {contacts.map((item) => (
-                <div key={item.label} className="flex items-center gap-3 rounded-2xl border border-black/8 bg-white/70 px-4 py-3 dark:border-white/10 dark:bg-white/[0.05]">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
-                    <item.icon className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{item.label}</div>
-                    <div className="text-sm">{item.value}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-2 mb-6">
-              <Input placeholder="Email для связи" className="max-w-xs bg-white/80 border-black/10 focus:border-black/30 dark:bg-white/[0.06] dark:border-white/10 dark:focus:border-white/20" />
-              <Button className="bg-gradient-to-b from-white to-zinc-100 text-black border border-black/10 hover:shadow-lg hover:shadow-black/8 transition-all duration-300 dark:border-white/12 dark:bg-gradient-to-b dark:from-zinc-900 dark:to-black dark:text-white dark:hover:shadow-white/10">
-                Связаться
-              </Button>
-            </div>
-
-            <div className="flex items-center space-x-3">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-9 h-9 rounded-lg bg-white/70 hover:bg-white flex items-center justify-center transition-all duration-300 hover:scale-110 border border-black/8 hover:border-black/20 dark:border-white/10 dark:bg-white/[0.05] dark:hover:bg-white/[0.08] dark:hover:border-white/20"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <social.icon className="h-4 w-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white" />
-                </motion.a>
-              ))}
-            </div>
           </motion.div>
 
           <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
-            <h4 className="font-medium mb-4">Services</h4>
+            <h4 className="font-medium mb-4">Услуги</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
@@ -117,7 +73,7 @@ export function Footer() {
           </motion.div>
 
           <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
-            <h4 className="font-medium mb-4">Resources</h4>
+            <h4 className="font-medium mb-4">Материалы</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
@@ -130,7 +86,7 @@ export function Footer() {
           </motion.div>
 
           <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
-            <h4 className="font-medium mb-4">Company</h4>
+            <h4 className="font-medium mb-4">Компания</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
@@ -143,7 +99,7 @@ export function Footer() {
           </motion.div>
 
           <motion.div className="lg:col-span-2" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}>
-            <h4 className="font-medium mb-4">Legal</h4>
+            <h4 className="font-medium mb-4">Документы</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
@@ -156,16 +112,38 @@ export function Footer() {
           </motion.div>
         </div>
 
+        <div className="mb-10 flex flex-col justify-between gap-3 md:flex-row">
+          {contacts.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+              className="flex min-h-[88px] min-w-0 flex-1 items-center gap-3 rounded-2xl border border-black/8 bg-white/70 px-5 py-4 transition-all duration-300 hover:border-black/20 hover:bg-white dark:border-white/10 dark:bg-white/[0.05] dark:hover:border-white/20 dark:hover:bg-white/[0.08] md:min-w-[220px]"
+            >
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
+                <item.icon className="h-4 w-4" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-xs text-muted-foreground">{item.label}</div>
+                <div className="mt-1 text-sm [word-break:normal] [overflow-wrap:normal] md:whitespace-nowrap">
+                  {item.value}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
         <Separator className="mb-8 bg-border/50" />
 
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground mb-4 md:mb-0">© 2026 Almadata. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground mb-4 md:mb-0">© 2026 Onepoint. Все права защищены.</p>
           <div className="flex items-center space-x-6 text-sm text-muted-foreground">
-            <span>TPM support</span>
+            <span>Независимая поддержка</span>
             <span>·</span>
-            <span>Infrastructure support</span>
+            <span>Поддержка инфраструктуры</span>
             <span>·</span>
-            <span>DevOps services</span>
+            <span>Услуги DevOps</span>
           </div>
         </div>
       </div>

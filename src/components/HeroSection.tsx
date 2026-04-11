@@ -4,32 +4,32 @@ import { ArrowRight, ShieldCheck, TimerReset, Wrench, ServerCog } from "lucide-r
 import { motion } from "motion/react";
 
 const metrics = [
-  { value: "до 70%", label: "экономия против OEM-поддержки" },
-  { value: "1-2 недели", label: "типовой срок поставки из наличия" },
-  { value: "24x7", label: "режим поддержки критичных систем" },
-  { value: "SLA 2/4/8", label: "модели реакции под бизнес-приоритет" },
+  { value: "1–2 недели", label: "поставка оборудования" },
+  { value: "до 70%", label: "экономия бюджета" },
+  { value: "24×7", label: "режим поддержки критичных систем" },
+  { value: "SLA", label: "фиксированные метрики реакции и восстановления" },
 ];
 
 const highlights = [
   {
     icon: ServerCog,
-    title: "Refurbished enterprise servers",
-    description: "Серверы и СХД для DR, backup, VDI, масштабирования и вторичных контуров.",
+    title: "Enterprise Refurbished серверы",
+    description: "Серверы и СХД для резервных контуров, VDI, тестовых сред и масштабирования.",
   },
   {
     icon: ShieldCheck,
-    title: "Third-Party Maintenance",
-    description: "Поддержка после EOSL, мультивендорная модель и прогнозируемый бюджет эксплуатации.",
+    title: "Независимая поддержка ИТ-оборудования",
+    description: "Поддержка после окончания гарантии, единый контракт на всех вендоров и гибкие SLA.",
   },
   {
     icon: TimerReset,
-    title: "24x7 infrastructure support",
-    description: "Диагностика, буферный склад, выезд инженеров и восстановление сервисов по SLA.",
+    title: "Поддержка 24×7 и SLA",
+    description: "Диагностика, мониторинг, выезд инженеров и восстановление сервисов по договорным метрикам.",
   },
   {
     icon: Wrench,
-    title: "DevOps services",
-    description: "CI/CD, IaC, Kubernetes, observability и эксплуатация production-сред.",
+    title: "Услуги DevOps",
+    description: "Автоматизация CI/CD, инфраструктура как код, Kubernetes и эксплуатационная поддержка.",
   },
 ];
 
@@ -44,7 +44,7 @@ export function HeroSection() {
           <div>
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
               <Badge className="mb-6 border border-black/10 bg-white/80 px-4 py-2 text-black hover:bg-white dark:border-white/10 dark:bg-white/[0.06] dark:text-white dark:hover:bg-white/[0.08]">
-                Almadata: enterprise infrastructure support
+                Onepoint
               </Badge>
             </motion.div>
 
@@ -54,11 +54,8 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.08 }}
             >
-              Refurbished servers,{" "}
-              <span className="text-brand-gradient">
-                TPM support
-              </span>{" "}
-              и DevOps-экспертиза для enterprise-инфраструктуры
+              Enterprise Refurbished серверы и{" "}
+              <span className="text-brand-gradient">ИТ-поддержка 24×7</span>
             </motion.h1>
 
             <motion.p
@@ -67,8 +64,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.16 }}
             >
-              Помогаем компаниям снижать TCO, продлевать жизненный цикл оборудования и удерживать стабильность
-              критичных сервисов через поставку корпоративного железа, независимую поддержку 24x7 и зрелые DevOps-практики.
+              Корпоративное оборудование с гарантией до 10 лет и поддержкой Onepoint.
             </motion.p>
 
             <motion.div
@@ -83,7 +79,7 @@ export function HeroSection() {
                 asChild
               >
                 <a href="#contacts">
-                  Получить консультацию
+                  Оставить заявку
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
@@ -123,10 +119,10 @@ export function HeroSection() {
             <div className="relative overflow-hidden rounded-[2rem] border border-black/8 bg-white/68 p-6 shadow-2xl shadow-black/8 backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.05] dark:shadow-white/6">
               <div className="flex items-start justify-between gap-4 rounded-2xl border border-black/8 bg-white/70 p-5 dark:border-white/10 dark:bg-white/[0.04]">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Operating model</p>
-                  <h3 className="mt-3 text-2xl font-semibold">Одна команда на весь жизненный цикл инфраструктуры</h3>
+                  <p className="text-sm uppercase tracking-[0.24em] text-muted-foreground">Модель работы</p>
+                  <h3 className="mt-3 text-2xl font-semibold">Единая команда сопровождения инфраструктуры</h3>
                 </div>
-                <div className="rounded-2xl bg-black px-3 py-2 text-sm text-white dark:bg-white dark:text-black">24x7</div>
+                <div className="rounded-2xl bg-black px-3 py-2 text-sm text-white dark:bg-white dark:text-black">24×7</div>
               </div>
 
               <div className="mt-5 grid gap-4">
@@ -150,8 +146,8 @@ export function HeroSection() {
 
               <div className="mt-5 rounded-2xl border border-black/8 bg-gradient-to-r from-zinc-100 via-white to-zinc-100 p-5 dark:border-white/10 dark:bg-gradient-to-r dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-900">
                 <p className="text-sm leading-6 text-foreground/90">
-                  Поддерживаем HPE, Dell, Lenovo, Huawei, IBM, Cisco, NetApp, EMC и другие вендорные платформы в рамках
-                  единой модели сопровождения.
+                  Поддерживаем HPE, Dell, Lenovo, Huawei, IBM, Cisco, NetApp, Pure Storage, Fujitsu, Hitachi, Juniper и Fortinet в рамках
+                  единой модели сопровождения Onepoint.
                 </p>
               </div>
             </div>

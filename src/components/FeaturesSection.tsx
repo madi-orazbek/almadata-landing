@@ -16,60 +16,64 @@ import { useRef, useState } from "react";
 const features = [
   {
     icon: Server,
-    title: "Enterprise Refurbished Servers",
-    description: "Восстановленные и протестированные enterprise servers с поставкой из наличия за 1–2 недели для масштабирования и вторичных контуров.",
-    badge: "Core",
+    title: "Enterprise Refurbished",
+    description: "Enterprise Refurbished — это восстановленное и протестированное оборудование корпоративного класса, подготовленное к эксплуатации по регламенту.",
+    badge: "Ключевое",
   },
   {
     icon: Settings,
-    title: "TPM (Third-Party Maintenance)",
-    description: "Независимая TPM support: экономия до 70% против OEM, поддержка после EOSL и мультивендорная поддержка в одном контракте.",
-    badge: "Core",
+    title: "Независимая поддержка ИТ-оборудования",
+    description: "Экономия до 70%, поддержка после окончания гарантии, один контракт на всех вендоров и гибкие SLA.",
+    badge: "Ключевое",
   },
   {
     icon: HeadphonesIcon,
-    title: "Поддержка серверов 24x7",
-    description: "Круглосуточная техническая поддержка, мониторинг инфраструктуры, реагирование по SLA и восстановление сервисов.",
-    badge: "Premium",
+    title: "Поддержка 24×7 и SLA",
+    description: "Поддержка и мониторинг 24×7, фиксированное время реакции и восстановления, выезд инженеров.",
+    badge: "Приоритет",
   },
   {
     icon: Network,
-    title: "Buffer Stock / ЗИП",
-    description: "Буферный склад запчастей рядом с площадкой заказчика, автоматическое пополнение и быстрое восстановление оборудования.",
-    badge: "Premium",
+    title: "Буферный склад комплектующих",
+    description: "Запас комплектующих у клиента, быстрая замена, автоматическое пополнение и минимизация простоев.",
+    badge: "Приоритет",
   },
   {
     icon: Database,
-    title: "Backup / DR / VDI",
-    description: "Инфраструктура для backup, DR-контуров, VDI и тестовых сред с прогнозируемой стоимостью владения.",
-    badge: "Enterprise",
+    title: "Refurbished серверы",
+    description: "Экономия 40–70%, производительность корпоративного уровня, полная диагностика и тестирование, гарантия до 5 лет.",
+    badge: "Инфраструктура",
   },
   {
     icon: Gauge,
-    title: "Infrastructure Optimization",
-    description: "Аудит инфраструктуры, оптимизация ресурсов и план развития мощностей без избыточных капитальных затрат.",
-    badge: "Enterprise",
+    title: "Экспертиза",
+    description: "AWS, Kubernetes, автоматизация CI/CD и оптимизация инфраструктуры для стабильной эксплуатации.",
+    badge: "Экспертиза",
   },
   {
     icon: Shield,
     title: "SLA и гарантия",
-    description: "Гибкие SLA 2/4/8 часов, выезд инженеров при необходимости и гарантия до 10 лет по условиям договора.",
-    badge: "Enterprise",
+    description: "Гарантия до 10 лет, журнал инцидентов, выполненные работы и рекомендации по повышению надёжности.",
+    badge: "Гарантии",
   },
   {
     icon: Clock,
-    title: "DevOps as a Service",
-    description: "DevOps услуги: CI/CD, Kubernetes, IaC, observability, centralized logging и DevSecOps для стабильной эксплуатации.",
+    title: "Услуги DevOps",
+    description: "Автоматизация CI/CD, инфраструктура как код, Kubernetes, мониторинг, логирование и резервное копирование.",
     badge: "DevOps",
   },
 ];
 
 const summary = [
-  "Поставка оборудования под проект и сроки бизнеса",
-  "Одна точка входа для поддержки нескольких вендоров",
-  "Буферный склад и SLA под критичные сервисы",
-  "DevOps-практики для устойчивой эксплуатации",
+  "Быстрая поставка 1–2 недели и готовность к работе",
+  "Один контракт для мультивендорной инфраструктуры",
+  "Гарантия до 10 лет и фиксированные SLA",
+  "Поддержка Onepoint 24×7 для критичных сервисов",
 ];
+
+const usageAreas = ["Расширение мощностей", "Резервные системы", "VDI", "Тестовые среды", "Масштабирование"];
+const vendors = ["HPE", "Dell", "Lenovo", "Huawei", "IBM", "Cisco", "NetApp", "Pure Storage", "Fujitsu", "Hitachi", "Juniper", "Fortinet"];
+const supportBenefits = ["Глобальная сеть складов", "Быстрая замена комплектующих", "Инженеры высокой квалификации"];
 
 function FeatureCard({ feature, index }: { feature: (typeof features)[0]; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -143,11 +147,11 @@ export function FeaturesSection() {
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4">
             Ключевые направления
-            <span className="text-brand-gradient"> Almadata</span>
+            <span className="text-brand-gradient"> Onepoint</span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
-            Поставка refurbished серверов, third-party maintenance, infrastructure support и DevOps экспертиза
-            для enterprise-инфраструктуры.
+            Поставка Enterprise Refurbished серверов, независимая поддержка ИТ-оборудования и услуги DevOps
+            для корпоративной инфраструктуры.
           </p>
         </motion.div>
         <div className="mb-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -161,6 +165,29 @@ export function FeaturesSection() {
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} />
           ))}
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20">
+            <h3 className="mb-3 text-xl font-semibold">Где используется</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              {usageAreas.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20">
+            <h3 className="mb-3 text-xl font-semibold">Поддерживаемые вендоры</h3>
+            <p className="text-sm leading-7 text-muted-foreground">{vendors.join(", ")}</p>
+          </div>
+          <div className="rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20">
+            <h3 className="mb-3 text-xl font-semibold">Преимущества поддержки</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              {supportBenefits.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

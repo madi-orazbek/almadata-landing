@@ -6,52 +6,56 @@ import { motion } from "motion/react";
 
 const plans = [
   {
-    name: "Refurbished Servers",
+    name: "Enterprise Refurbished серверы",
     price: "По запросу",
-    description: "Поставка и запуск enterprise refurbished оборудования",
+    description: "Поставка и запуск восстановленного корпоративного оборудования",
     fit: "Для DR, backup, VDI, резервных и вторичных контуров",
     features: [
       "Поставка за 1–2 недели при наличии",
-      "Снижение CAPEX относительно OEM",
+      "Экономия 40–70% по сравнению с новыми поставками",
       "Конфигурации под DR / Backup / VDI",
       "Тестирование и предпродажная проверка",
       "Гарантийные условия под проект",
     ],
     cta: "Запросить предложение",
+    href: "#contacts",
     popular: false,
   },
   {
-    name: "TPM Support 24x7",
+    name: "Поддержка 24×7 и SLA",
     price: "По SLA",
     description: "Независимая поддержка серверов и СХД корпоративного класса",
-    fit: "Для production-сред, где важны uptime, сроки реакции и экономия OPEX",
+    fit: "Для рабочих сред, где важны доступность, сроки реакции и экономия операционных затрат",
     features: [
-      "Экономия до 70% против OEM",
+      "Экономия до 70%",
       "Мультивендорная поддержка в одном контракте",
-      "Поддержка после EOSL",
-      "SLA 2/4/8 часов",
-      "Глобальная сеть запчастей",
+      "Поддержка после окончания гарантии",
+      "Фиксированное время реакции и восстановления",
+      "Глобальная сеть складов и комплектующих",
       "Выезд инженеров при необходимости",
       "Гарантия до 10 лет",
     ],
     cta: "Получить консультацию",
+    href: "tel:+77781018007",
     popular: true,
   },
   {
-    name: "Infrastructure & DevOps",
-    price: "Custom",
-    description: "Оптимизация инфраструктуры и эксплуатация через DevOps практики",
+    name: "Услуги DevOps",
+    price: "Индивидуально",
+    description: "Оптимизация инфраструктуры и эксплуатация через DevOps-практики",
     fit: "Для платформ, которым нужны скорость релизов, наблюдаемость и зрелая эксплуатация",
     features: [
-      "Infrastructure optimization",
-      "CI/CD и автоматизация deployment",
-      "Kubernetes / Docker / IaC",
-      "Monitoring и centralized logging",
-      "Backup & recovery стратегии",
+      "Оптимизация инфраструктуры",
+      "Автоматизация CI/CD",
+      "Инфраструктура как код",
+      "Kubernetes и контейнеризация",
+      "Мониторинг и логирование",
+      "Резервное копирование",
       "DevSecOps и обучение команды",
       "Регулярная отчетность по SLA",
     ],
     cta: "Обсудить проект",
+    href: "https://wa.me/77781018007",
     popular: false,
   },
 ];
@@ -71,7 +75,7 @@ export function PricingSection() {
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4">
             Пакеты услуг
-            <span className="text-brand-gradient"> для enterprise</span>
+            <span className="text-brand-gradient"> для корпоративной инфраструктуры</span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
             Гибкие модели подключения под оборудование, SLA и требования к доступности инфраструктуры.
@@ -122,12 +126,15 @@ export function PricingSection() {
                     ))}
                   </ul>
                   <Button
+                    asChild
                     className={`w-full transition-all duration-300 hover:scale-105 active:scale-95 ${
                       plan.popular ? "bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/50" : "hover:bg-primary/10"
                     }`}
                     variant={plan.popular ? "default" : "outline"}
                   >
-                    {plan.cta}
+                    <a href={plan.href} target={plan.href.startsWith("http") ? "_blank" : undefined} rel={plan.href.startsWith("http") ? "noreferrer" : undefined}>
+                      {plan.cta}
+                    </a>
                   </Button>
                 </CardContent>
               </Card>
