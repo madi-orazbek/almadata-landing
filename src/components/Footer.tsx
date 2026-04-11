@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
-import { Mail, Phone, Globe } from "lucide-react";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
 
 const footerLinks = {
@@ -31,9 +31,9 @@ const footerLinks = {
 };
 
 const contacts = [
-  { icon: Mail, label: "Эл. почта", value: "onepoint360.kz@gmail.com" },
-  { icon: Phone, label: "Телефон", value: "+7 778 101 8007" },
-  { icon: Globe, label: "Сайт", value: "www.onepoint.kz" },
+  { icon: Mail, label: "Эл. почта", value: "onepoint360.kz@gmail.com", href: "mailto:onepoint360.kz@gmail.com" },
+  { icon: Phone, label: "Телефон", value: "+7 778 101 8007", href: "tel:+77781018007" },
+  { icon: MessageCircle, label: "WhatsApp", value: "Написать в WhatsApp", href: "https://wa.me/77781018007" },
 ];
 
 export function Footer() {
@@ -59,9 +59,15 @@ export function Footer() {
               Enterprise Refurbished оборудования, независимую поддержку и DevOps-экспертизу.
             </p>
 
-            <div className="mb-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            <div className="mb-6 flex flex-col gap-3 md:flex-row md:flex-wrap lg:flex-nowrap">
               {contacts.map((item) => (
-                <div key={item.label} className="flex h-full min-h-[88px] items-center gap-3 rounded-2xl border border-black/8 bg-white/70 px-4 py-3 dark:border-white/10 dark:bg-white/[0.05]">
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                  className="flex min-h-[88px] flex-1 items-center gap-3 rounded-2xl border border-black/8 bg-white/70 px-4 py-3 transition-all duration-300 hover:border-black/20 hover:bg-white dark:border-white/10 dark:bg-white/[0.05] dark:hover:border-white/20 dark:hover:bg-white/[0.08] md:basis-[calc(50%-0.375rem)] lg:basis-0"
+                >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-white dark:bg-white dark:text-black">
                     <item.icon className="h-4 w-4" />
                   </div>
@@ -69,7 +75,7 @@ export function Footer() {
                     <div className="text-xs text-muted-foreground">{item.label}</div>
                     <div className="mt-1 text-sm break-all">{item.value}</div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
 
