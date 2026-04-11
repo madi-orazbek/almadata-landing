@@ -168,7 +168,7 @@ export function FeaturesSection() {
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          <div className="rounded-2xl border border-white/10 bg-card/50 p-6 backdrop-blur-sm">
+          <div className="rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20">
             <h3 className="mb-3 text-xl font-semibold">Где используется</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {usageAreas.map((item) => (
@@ -176,11 +176,11 @@ export function FeaturesSection() {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-card/50 p-6 backdrop-blur-sm">
+          <div className="rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20">
             <h3 className="mb-3 text-xl font-semibold">Поддерживаемые вендоры</h3>
             <p className="text-sm leading-7 text-muted-foreground">{vendors.join(", ")}</p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-card/50 p-6 backdrop-blur-sm">
+          <div className="rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20">
             <h3 className="mb-3 text-xl font-semibold">Преимущества поддержки</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {supportBenefits.map((item) => (

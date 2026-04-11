@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
-import { Github, Twitter, Linkedin, Youtube, Mail, Phone, Globe } from "lucide-react";
+import { Mail, Phone, Globe } from "lucide-react";
 import { motion } from "motion/react";
 
 const footerLinks = {
@@ -29,13 +29,6 @@ const footerLinks = {
     { label: "SLA", href: "#" },
   ],
 };
-
-const socialLinks = [
-  { icon: Twitter, href: "#", label: "Твиттер" },
-  { icon: Github, href: "#", label: "Гитхаб" },
-  { icon: Linkedin, href: "#", label: "Линкедин" },
-  { icon: Youtube, href: "#", label: "Ютуб" },
-];
 
 const contacts = [
   { icon: Mail, label: "Эл. почта", value: "onepoint360.kz@gmail.com" },
@@ -80,29 +73,19 @@ export function Footer() {
               ))}
             </div>
 
-            <div className="mb-6 grid max-w-md grid-cols-1 items-stretch gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
+            <div className="grid max-w-md grid-cols-1 items-stretch gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
               <Input
                 placeholder="Email для связи"
                 className="h-11 w-full bg-white/80 border-black/10 focus:border-black/30 dark:bg-white/[0.06] dark:border-white/10 dark:focus:border-white/20"
               />
-              <Button className="h-11 bg-gradient-to-b from-white to-zinc-100 text-black border border-black/10 hover:shadow-lg hover:shadow-black/8 transition-all duration-300 dark:border-white/12 dark:bg-gradient-to-b dark:from-zinc-900 dark:to-black dark:text-white dark:hover:shadow-white/10">
-                Связаться
+              <Button
+                asChild
+                className="h-11 bg-gradient-to-b from-white to-zinc-100 text-black border border-black/10 hover:shadow-lg hover:shadow-black/8 transition-all duration-300 dark:border-white/12 dark:bg-gradient-to-b dark:from-zinc-900 dark:to-black dark:text-white dark:hover:shadow-white/10"
+              >
+                <a href="https://wa.me/77781018007" target="_blank" rel="noreferrer">
+                  Связаться
+                </a>
               </Button>
-            </div>
-
-            <div className="flex items-center gap-3">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-black/8 bg-white/70 transition-all duration-300 hover:scale-110 hover:border-black/20 hover:bg-white dark:border-white/10 dark:bg-white/[0.05] dark:hover:border-white/20 dark:hover:bg-white/[0.08]"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <social.icon className="h-4 w-4 text-muted-foreground group-hover:text-black dark:group-hover:text-white" />
-                </motion.a>
-              ))}
             </div>
           </motion.div>
 

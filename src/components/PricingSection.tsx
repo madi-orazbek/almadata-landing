@@ -18,6 +18,7 @@ const plans = [
       "Гарантийные условия под проект",
     ],
     cta: "Запросить предложение",
+    href: "#contacts",
     popular: false,
   },
   {
@@ -35,6 +36,7 @@ const plans = [
       "Гарантия до 10 лет",
     ],
     cta: "Получить консультацию",
+    href: "tel:+77781018007",
     popular: true,
   },
   {
@@ -53,6 +55,7 @@ const plans = [
       "Регулярная отчетность по SLA",
     ],
     cta: "Обсудить проект",
+    href: "https://wa.me/77781018007",
     popular: false,
   },
 ];
@@ -123,12 +126,15 @@ export function PricingSection() {
                     ))}
                   </ul>
                   <Button
+                    asChild
                     className={`w-full transition-all duration-300 hover:scale-105 active:scale-95 ${
                       plan.popular ? "bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/50" : "hover:bg-primary/10"
                     }`}
                     variant={plan.popular ? "default" : "outline"}
                   >
-                    {plan.cta}
+                    <a href={plan.href} target={plan.href.startsWith("http") ? "_blank" : undefined} rel={plan.href.startsWith("http") ? "noreferrer" : undefined}>
+                      {plan.cta}
+                    </a>
                   </Button>
                 </CardContent>
               </Card>

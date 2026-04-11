@@ -58,7 +58,7 @@ export function CTABanner() {
               className="w-full sm:w-auto border-black/10 bg-white/40 hover:bg-white hover:border-black/20 transition-all duration-300 hover:scale-105 active:scale-95 text-lg px-8 py-6 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-white/[0.06] dark:hover:border-white/20"
               asChild
             >
-              <a href="#packages">Запросить предложение</a>
+              <a href="#contacts">Запросить предложение</a>
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-6">
